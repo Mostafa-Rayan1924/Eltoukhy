@@ -32,7 +32,7 @@ const Header = () => {
           <Link className="hidden md:flex" href={"/contact"}>
             <button className="group relative inline-block rounded overflow-hidden border border-primary px-6 py-[6px] focus:outline-none focus:ring">
               <span className="absolute inset-y-0 left-0 w-[2px] bg-primary transition-all group-hover:w-full group-active:bg-indigo-500"></span>
-              <span className="relative text-sm font-medium text-primary transition-colors group-hover:text-white">
+              <span className="relative whitespace-nowrap text-sm font-medium text-primary transition-colors group-hover:text-white">
                 Call Us
               </span>
             </button>

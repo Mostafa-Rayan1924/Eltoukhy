@@ -52,16 +52,12 @@ const Sidebar = () => {
           <div className="flex items-center justify-center mx-auto mt-10 gap-4">
             {socialLinks.map((link) => (
               <div
-                className={`bg-[${link.color}] hover:-translate-y-2 duration-200  relative size-12 grid place-items-center rounded-lg`}>
+                className={` hover:-translate-y-2 duration-200  relative size-12 grid place-items-center rounded-lg`}>
                 <Link
                   className={`p-2  rounded-lg text-white `}
                   href={link.path}
                   key={link.id}>
-                  {link.image ? (
-                    <Image fill alt="whatsapp" src={link.icon} />
-                  ) : (
-                    <span>{link.icon}</span>
-                  )}
+                  <Image fill alt="whatsapp" src={link.icon} />
                 </Link>
               </div>
             ))}

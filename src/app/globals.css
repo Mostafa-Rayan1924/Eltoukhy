@@ -1,7 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+.mySwiper {
+  width: 100% !important;
+  height: 100% !important;
+}
 @layer base {
   :root {
     --background: 0 0% 100%;

@@ -100,6 +100,12 @@
     --chart-5: 340 75% 55%;
   }
 }
+.swiper4 .swiper-slide img {
+  filter: brightness(0.4);
+}
+.swiper4 .swiper-slide-active img {
+  filter: brightness(1);
+}
 
 @layer base {
   * {

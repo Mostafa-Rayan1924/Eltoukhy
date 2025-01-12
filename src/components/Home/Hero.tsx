@@ -94,7 +94,9 @@ const Hero = () => {
           <div className="flex items-center  justify-center md:justify-end gap-4">
             {slides.slice(0, 4).map((slide, i) => (
               <div
-                onClick={() => swiper?.slideTo(i)}
+                onClick={() => {
+                  swiper?.slideTo(i);
+                }}
                 className="size-[60px] sm:size-[120px] md:size-[170px] cursor-pointer relative"
                 key={slide.id}>
                 <Image

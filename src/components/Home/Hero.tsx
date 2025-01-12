@@ -72,12 +72,12 @@ const Hero = () => {
                 alt={slide.title}
               />
             </div>
-            <div className="absolute top-1/2 sm:top-[40%]  -translate-y-1/2 w-full  text-center md:text-start  md:ms-20">
+            <div className="absolute top-[40%]  -translate-y-1/2 w-full  text-center md:text-start  md:ms-20">
               <motion.h2
                 initial={{ opacity: 0, y: -40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7 }}
-                className="text-white text-2xl md:text-4xl font-semibold capitalize mb-3 md:max-w-2xl leading-relaxed">
+                className="text-white text-2xl md:text-4xl font-semibold capitalize mb-1 md:mb-3 md:max-w-2xl leading-relaxed">
                 {slide.title}
               </motion.h2>
               <motion.p

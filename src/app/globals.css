@@ -5,6 +5,45 @@
   width: 100% !important;
   height: 100% !important;
 }
+.mySwiper2 {
+  height: 200px;
+  width: 100%;
+}
+.mySwiper2 .swiper-pagination-bullet {
+  border-radius: 4px !important;
+  height: 6px !important;
+  width: 20px !important;
+  opacity: 1 !important;
+  transition: 0.3s ease !important;
+  background-color: rgb(203, 203, 203) !important;
+}
+.mySwiper2 .swiper-pagination .swiper-pagination-bullet-active {
+  background-color: #3a72ec !important;
+  transform: rotate(180deg) !important;
+}
+.mySwiper2 .swiper-button-prev,
+.mySwiper2 .swiper-button-next {
+  top: 40% !important;
+  background-color: #3a72ec80 !important;
+  color: white !important;
+  border-radius: 50% !important;
+  width: 30px !important;
+  height: 30px !important;
+}
+.mySwiper2 .swiper-button-prev:hover,
+.mySwiper2 .swiper-button-next:hover {
+  background-color: #3a72ec !important;
+}
+@media (max-width: 786px) {
+  .mySwiper2 .swiper-button-prev,
+  .mySwiper2 .swiper-button-next {
+    display: none !important;
+  }
+}
+.mySwiper2 .swiper-button-prev:after,
+.swiper-button-next:after {
+  font-size: 16px !important;
+}
 @layer base {
   :root {
     --background: 0 0% 100%;

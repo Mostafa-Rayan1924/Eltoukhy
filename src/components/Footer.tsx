@@ -6,7 +6,7 @@ import { Button, buttonVariants } from "./ui/button";
 
 const Footer = () => {
   return (
-    <footer className="bg-background lg:grid lg:grid-cols-5">
+    <footer className="bg-background lg:grid lg:grid-cols-5 mt-10">
       <div className="relative block h-32 lg:col-span-2 lg:h-full">
         <Image
           fill
@@ -85,7 +85,7 @@ const Footer = () => {
               </h3>
             </div>
 
-            <p className="mt-8 text-sm text-muted-foreground sm:mt-0">
+            <p className="mt-4 text-sm text-muted-foreground sm:mt-0">
               &copy; 2025.{" "}
               <span className="text-primary font-semibold">El Toukhy</span>. All
               rights reserved.

@@ -5,6 +5,7 @@ import { Cairo } from "next/font/google";
 import Header from "@/components/Navigation/Header";
 import { ThemeProvider } from "@/constants/theme-provider";
 import NextTopLoader from "nextjs-toploader";
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -31,6 +32,7 @@ export default function RootLayout({
           disableTransitionOnChange>
           <Header />
           {children}
+          <Footer />
         </ThemeProvider>
       </body>
     </html>

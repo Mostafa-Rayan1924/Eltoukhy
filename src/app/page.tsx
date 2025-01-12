@@ -3,6 +3,8 @@ import Hero from "@/components/Home/Hero";
 import Projects from "@/components/Home/Projects";
 import Services from "@/components/Home/Services";
 import Suppliers from "@/components/Home/Suppliers";
+import WhyUs from "@/components/Home/WhyUs";
+import Contact from "@/components/sharable/Contact";
 
 export default function Home() {
   return (
@@ -10,8 +12,10 @@ export default function Home() {
       <Hero />
       <About />
       <Services />
-      <Projects />
       <Suppliers />
+      <Projects />
+      <WhyUs />
+      <Contact />
     </main>
   );
 }

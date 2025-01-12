@@ -6,7 +6,7 @@ import { Button, buttonVariants } from "./ui/button";
 
 const Footer = () => {
   return (
-    <footer className="bg-background lg:grid lg:grid-cols-5 mt-10">
+    <footer className="bg-background lg:grid lg:grid-cols-5 mt-20">
       <div className="relative block h-32 lg:col-span-2 lg:h-full">
         <Image
           fill

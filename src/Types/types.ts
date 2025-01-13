@@ -16,3 +16,9 @@ export type WhyUsItem = {
   title: string;
   desc: string;
 };
+export type GoalsItem = {
+  id: number;
+  img: string;
+  title: string;
+  desc: string;
+};

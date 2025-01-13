@@ -1,20 +1,26 @@
+"use client";
 import { Button, buttonVariants } from "../ui/button";
 import { contactForm } from "@/constants/Contact";
 import { socialLinks } from "@/constants/socialLinks";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-
+import { motion } from "framer-motion";
 const Contact = () => {
   return (
     <section>
-      <div className="container  ">
+      <div className="container">
         <div className="h-full max-w-[750px] flex-wrap  mx-auto flex border border-border rounded-lg ">
           <div className="w-full md:w-[30%] min-h-full relative  ">
             <div className="bg-background space-y-6 rounded-lg md:border-2 border-border w-full lg:-left-1/2 md:absolute h-fit p-4 md:top-1/2 md:-translate-y-1/2 ">
-              {contactForm.map((item) => {
+              {contactForm.map((item, i) => {
                 return (
-                  <div className="flex  gap-4">
+                  <motion.div
+                    key={item.id}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: i * 0.2 }}
+                    className="flex  gap-4">
                     <item.icon className="size-6 flex-shrink-0 text-blue-500 mt-1" />
                     <div>
                       <h2 className="text-xl font-semibold capitalize">
@@ -22,20 +28,24 @@ const Contact = () => {
                       </h2>
                       <p className="text-sm">{item.desc}</p>
                     </div>
-                  </div>
+                  </motion.div>
                 );
               })}
               <div className="flex items-center justify-center gap-4">
                 {socialLinks.map((link) => (
-                  <div
-                    className={` hover:-translate-y-2 duration-200  relative size-8 `}>
+                  <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    whileHover={{ y: -5, transition: { duration: 0.2 } }}
+                    transition={{ duration: 0.6 }}
+                    className={`   relative size-8 `}>
                     <Link
                       className={`p-2  rounded-lg text-white `}
                       href={link.path}
                       key={link.id}>
                       <Image fill alt="whatsapp" src={link.icon} />
                     </Link>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
             </div>
@@ -50,7 +60,11 @@ const Contact = () => {
             <h2 className="text-2xl mb-4 md:text-3xl lg:text-4xl font-semibold">
               Contact Form
             </h2>
-            <div className="space-y-4">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="space-y-4">
               <div className="flex flex-col gap-1">
                 <label>Full Name</label>
                 <input
@@ -74,7 +88,7 @@ const Contact = () => {
                   className="border border-border h-[150px] resize-none p-2 w-full bg-accent outline-none  rounded"
                 />
               </div>
-            </div>
+            </motion.div>
             <Button
               className={
                 (buttonVariants({ size: "lg" }), "w-full mt-6 text-xl")

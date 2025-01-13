@@ -16,7 +16,7 @@ const Footer = () => {
         />
       </div>
 
-      <div className="px-4 pt-16 pb-6 sm:px-6 lg:col-span-3 lg:px-8">
+      <div className="px-4 pt-16 pb-6 sm:px-6 lg:col-span-3 border-t border-border lg:px-8">
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
           <div>
             <p>
@@ -76,7 +76,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="mt-12 border-t text-center border-gray-100 pt-6">
+        <div className="mt-12 border-t text-center border-border pt-6">
           <div className="sm:flex sm:items-center sm:justify-between">
             <div>
               <h3 className="text-muted-foreground text-sm transition hover:opacity-75">

@@ -7,9 +7,9 @@ export let links: Links[] = [
     url: "/",
   },
   {
-    id: 2,
-    title: "About",
-    url: "/about",
+    id: 7,
+    title: "Services",
+    url: "/services",
   },
   {
     id: 3,
@@ -17,9 +17,9 @@ export let links: Links[] = [
     url: "/projects",
   },
   {
-    id: 7,
-    title: "Services",
-    url: "/services",
+    id: 2,
+    title: "About us",
+    url: "/about",
   },
   {
     id: 5,

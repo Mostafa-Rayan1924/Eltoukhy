@@ -22,14 +22,14 @@ const About = () => {
             <motion.h3
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4 }}
+              transition={{ duration: 0.4, delay: 0.2 }}
               className="text-2xl font-bold text-foreground">
               Learn more about us
             </motion.h3>
             <motion.p
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4 }}
+              transition={{ duration: 0.4, delay: 0.4 }}
               className=" text-muted-foreground  leading-relaxed">
               Altoukhy Glass launched in 1998 as a specialist company in glass
               works, supply and install all types of Glass works Altoukhy Glass

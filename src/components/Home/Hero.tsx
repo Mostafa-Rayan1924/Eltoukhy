@@ -83,7 +83,7 @@ const Hero = () => {
               <motion.p
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7 }}
+                transition={{ duration: 0.7, delay: 0.2 }}
                 className="text-lg md:text-2xl text-gray-300 mx-3 md:mx-0  md:max-w-2xl leading-relaxed">
                 {slide.description}
               </motion.p>

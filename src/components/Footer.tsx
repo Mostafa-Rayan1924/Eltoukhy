@@ -10,7 +10,7 @@ const Footer = () => {
       <div className="relative block h-32 lg:col-span-2 lg:h-full">
         <Image
           fill
-          src="https://media.istockphoto.com/id/502706671/photo/modern-office-architecture-hamburg-hafencity-university.webp?a=1&b=1&s=612x612&w=0&k=20&c=JlngAnKrT-SwG4H6U0NC2jw4v5ydcEYnvN_4ESKxCy8="
+          src="https://images.unsplash.com/photo-1489465033131-30f7e2025f68?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Z2xhc3MlMjBjb21wYW55fGVufDB8fDB8fHww" // Interior glass design
           alt=""
           className="absolute inset-0  object-cover"
         />

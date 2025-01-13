@@ -22,3 +22,9 @@ export type GoalsItem = {
   title: string;
   desc: string;
 };
+export type profileTypeItem = {
+  icon: React.ElementType;
+  title: string;
+  description: string;
+  link: string;
+};

@@ -8,8 +8,8 @@ import NextTopLoader from "nextjs-toploader";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Eltoukhy",
-  description: "",
+  title: "Altoukhy",
+  description: "Altoukhy Elegance Framed in Glass",
   icons: [
     {
       url: "/logowhite.png",

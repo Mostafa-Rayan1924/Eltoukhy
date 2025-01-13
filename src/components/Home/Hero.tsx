@@ -45,7 +45,7 @@ const Hero = () => {
       description:
         "Impact-resistant glass that provides sound and heat insulation, focusing on sustainability and environmental care.",
       image:
-        "https://media.istockphoto.com/id/1167235640/photo/small-business-building-exterior.webp?a=1&b=1&s=612x612&w=0&k=20&c=8ZWoD6KFBmqZrd9dSo6dDGVdGrpeQFQnhzKudvl7bXE=", // Treated glass
+        "https://plus.unsplash.com/premium_photo-1661880095551-b900dbf2308d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Z2xhc3MlMjBjb21wYW55fGVufDB8fDB8fHww",
     },
   ];
   return (

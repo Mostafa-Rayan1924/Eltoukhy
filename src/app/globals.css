@@ -111,7 +111,21 @@
 .swiper4 .swiper-slide-active img {
   filter: brightness(1);
 }
-
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #3a72ec;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: #3a72ecd1;
+}
+::-webkit-scrollbar-track {
+  background-color: #f8fafc;
+}
+html.dark ::-webkit-scrollbar-track {
+  background-color: #1e293b;
+}
 @layer base {
   * {
     @apply border-border;

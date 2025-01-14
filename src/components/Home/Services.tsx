@@ -1,5 +1,7 @@
+import Link from "next/link";
 import MainTitle from "../sharable/MainTitle";
 import ServBox from "./ServBox";
+import { buttonVariants } from "../ui/button";
 
 const Services = () => {
   return (
@@ -9,6 +11,14 @@ const Services = () => {
         <ServBox />
         <ServBox />
         <ServBox />
+        <ServBox />
+        <ServBox />
+        <ServBox />
+      </div>
+      <div className="text-center mt-10">
+        <Link className={buttonVariants({ size: "lg" })} href={"/services"}>
+          See More
+        </Link>
       </div>
     </section>
   );

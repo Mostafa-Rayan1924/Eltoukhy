@@ -42,7 +42,7 @@ const SupplierSwiper = ({
       className="mySwiper2 ">
       {items.map((item, i) => (
         <SwiperSlide key={i}>
-          <div className="relative w-full h-[150px]   m-auto">
+          <div className={`relative w-full h-[150px]   m-auto`}>
             <Image
               src={item.image}
               fill
@@ -50,6 +50,9 @@ const SupplierSwiper = ({
               className="rounded-lg"
             />
           </div>
+          <h2 className="mt-2 md:mt-4 text-center text-xl capitalize ">
+            {item.title}
+          </h2>
         </SwiperSlide>
       ))}
     </Swiper>

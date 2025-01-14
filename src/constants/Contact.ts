@@ -6,18 +6,18 @@ export const contactForm: ContactItem[] = [
     id: 1,
     icon: MapPin,
     title: "Location",
-    desc: "Ismailia, Elshohada street between 1 and 2",
+    desc: "20th Ahmed Faheem bayoumy st.,Elnozha area _ cairo",
   },
   {
     id: 2,
     icon: Phone,
     title: "Phone",
-    desc: "01002721298 ",
+    desc: "+0201001843200 +0201000655068",
   },
   {
     id: 3,
     icon: Clock,
     title: "Hours",
-    desc: "From 9:00 AM to 6:00 PM",
+    desc: "From 10:00 AM to 4:00 PM",
   },
 ];

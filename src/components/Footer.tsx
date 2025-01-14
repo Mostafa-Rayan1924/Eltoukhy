@@ -24,13 +24,15 @@ const Footer = () => {
                 Call us
               </span>
               <h2 className="block text-2xl font-medium text-foreground hover:opacity-75 sm:text-3xl">
-                0123456789
+                01001843200
               </h2>
             </p>
 
             <ul className="mt-8 space-y-1 text-sm text-muted-foreground">
-              <li>Monday to Friday: 10am - 5pm</li>
-              <li>Weekend: 10am - 3pm</li>
+              <li>Hours: From 10:00 AM to 4:00 PM</li>
+              <li>
+                location: 20th Ahmed Faheem bayoumy st .,Elnozha area _ cairo
+              </li>
             </ul>
 
             <ul className="mt-8 flex gap-3">

@@ -6,8 +6,13 @@
   height: 100% !important;
 }
 .mySwiper2 {
-  height: 200px;
+  height: 240px;
   width: 100%;
+}
+@media (min-width: 786px) {
+  .mySwiper2 {
+    height: 250px;
+  }
 }
 .mySwiper2 .swiper-pagination-bullet {
   border-radius: 4px !important;
@@ -23,7 +28,7 @@
 }
 .mySwiper2 .swiper-button-prev,
 .mySwiper2 .swiper-button-next {
-  top: 40% !important;
+  top: 35% !important;
   background-color: #3a72ec80 !important;
   color: white !important;
   border-radius: 50% !important;

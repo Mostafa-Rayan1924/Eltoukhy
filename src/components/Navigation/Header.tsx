@@ -13,7 +13,7 @@ const Header = () => {
       <div className="w-[90%] md:w-[95%] lg:w-[80%] m-auto flex justify-between items-center gap-4">
         <Logo />
         <nav className="md:flex hidden">
-          <ul className="flex items-center gap-6 lg:gap-8">
+          <ul className="flex items-center gap-4 lg:gap-8">
             {links.map(
               (link) =>
                 link.onMobile !== false && (

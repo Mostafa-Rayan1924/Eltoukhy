@@ -16,10 +16,12 @@ import Logo from "./Logo";
 import { usePathname } from "next/navigation";
 import { socialLinks } from "@/constants/socialLinks";
 import Image from "next/image";
+import { useState } from "react";
 const Sidebar = () => {
   let pathname = usePathname();
+  let [open, setOpen] = useState(false);
   return (
-    <Sheet>
+    <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
         <div
           className="border border-input cursor-pointer bg-background size-10 rounded-md grid place-items-center
@@ -28,7 +30,7 @@ const Sidebar = () => {
         </div>
       </SheetTrigger>
       <SheetContent>
-        <SheetHeader>
+        <SheetHeader onClick={() => setOpen(!open)}>
           <SheetTitle>
             <Logo />
           </SheetTitle>
@@ -39,6 +41,7 @@ const Sidebar = () => {
         <div className="grid gap-4 py-4">
           {links.map((link) => (
             <Link
+              onClick={() => setOpen(!open)}
               className={`${
                 pathname === link.url ? "bg-accent text-primary" : ""
               } hover:bg-accent p-2

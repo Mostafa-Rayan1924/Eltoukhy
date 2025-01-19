@@ -5,6 +5,7 @@ import Services from "@/components/Home/Services";
 import Suppliers from "@/components/Home/Suppliers";
 import WhyUs from "@/components/Home/WhyUs";
 import Contact from "@/components/sharable/Contact";
+import Dashboard from "@/components/sharable/Dashboard";
 export const metadata = {
   title: "Altoukhy - Home Page",
   description:

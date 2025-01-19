@@ -4,9 +4,46 @@ import { contactForm } from "@/constants/Contact";
 import { socialLinks } from "@/constants/socialLinks";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const [status, setStatus] = useState("idle");
+  const handleChange = (
+    e:
+      | React.ChangeEvent<HTMLInputElement>
+      | React.ChangeEvent<HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus("submitting");
+    //id mgvezoaa
+    try {
+      const response = await fetch("https://formspree.io/f/mgvezoaa", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setStatus("success");
+        setFormData({ name: "", email: "", message: "" });
+      } else {
+        setStatus("error");
+      }
+    } catch (error) {
+      setStatus("error");
+    }
+  };
   return (
     <section>
       <div className="container">
@@ -56,7 +93,7 @@ const Contact = () => {
               className="hidden md:block object-fill h-full"
             />
           </div>
-          <div className="flex-1 md:w-[70%]  p-10">
+          <form onSubmit={handleSubmit} className="flex-1 md:w-[70%]  p-10">
             <h2 className="text-2xl mb-4 md:text-3xl lg:text-4xl font-semibold">
               Contact Form
             </h2>
@@ -69,6 +106,10 @@ const Contact = () => {
                 <label>Full Name</label>
                 <input
                   type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
                   placeholder="Name"
                   className="border border-border p-2 w-full bg-accent outline-none  rounded"
                 />
@@ -77,25 +118,37 @@ const Contact = () => {
                 <label>Email</label>
                 <input
                   type="text"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
                   placeholder="Email"
+                  required
                   className="border border-border p-2 w-full bg-accent outline-none  rounded"
                 />
               </div>
               <div className="flex flex-col gap-1">
-                <label>Full Name</label>
                 <textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
                   placeholder="Leave a message"
                   className="border border-border h-[150px] resize-none p-2 w-full bg-accent outline-none  rounded"
                 />
               </div>
             </motion.div>
             <Button
+              disabled={status === "success"}
               className={
                 (buttonVariants({ size: "lg" }), "w-full mt-6 text-xl")
               }>
-              Submit
+              {status === "submitting"
+                ? "loading..."
+                : status === "success"
+                ? "sent successfully"
+                : "submit"}
             </Button>
-          </div>
+          </form>
         </div>
       </div>
     </section>

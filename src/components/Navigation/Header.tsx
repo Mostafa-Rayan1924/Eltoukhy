@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ModeToggle } from "./ModeToggle";
 import Sidebar from "./Sidebar";
 import { usePathname } from "next/navigation";
+import Dashboard from "../sharable/Dashboard";
 
 const Header = () => {
   let pathname = usePathname();
@@ -45,10 +46,10 @@ const Header = () => {
               alt="ar language"
             />
           </div>
-
           <div className="flex md:hidden">
             <Sidebar />
           </div>
+          <Dashboard />
         </div>
       </div>
     </header>

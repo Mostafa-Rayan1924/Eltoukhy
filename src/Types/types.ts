@@ -28,3 +28,7 @@ export type profileTypeItem = {
   description: string;
   link: string;
 };
+export enum category {
+  opt1 = "Glass Work",
+  opt2 = "Aluminum Work",
+}

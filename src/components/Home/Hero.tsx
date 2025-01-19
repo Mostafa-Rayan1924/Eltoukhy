@@ -6,48 +6,49 @@ import "swiper/css";
 import { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+export let slides: {
+  id: number;
+  title: string;
+  description: string;
+  image: string;
+}[] = [
+  {
+    id: 1,
+    title: "Welcome to Our Glass Company",
+    description:
+      "We offer a wide range of high-quality glass solutions for architectural designs and modern buildings.",
+    image:
+      "https://plus.unsplash.com/premium_photo-1661880095551-b900dbf2308d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Z2xhc3MlMjBjb21wYW55fGVufDB8fDB8fHww", // Architectural glass
+  },
+  {
+    id: 2,
+    title: "High-Quality Glass Manufacturing",
+    description:
+      "We utilize advanced technologies to produce durable and safe glass for residential and commercial purposes.",
+    image:
+      "https://images.unsplash.com/photo-1470075801209-17f9ec0cada6?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Z2xhc3MlMjBjb21wYW55fGVufDB8fDB8fHww", // Glass manufacturing
+  },
+  {
+    id: 3,
+    title: "Innovative Glass Designs",
+    description:
+      "Custom glass designs to suit all tastes, from doors and windows to premium interior decorations.",
+    image:
+      "https://images.unsplash.com/photo-1489465033131-30f7e2025f68?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Z2xhc3MlMjBjb21wYW55fGVufDB8fDB8fHww", // Interior glass design
+  },
+  {
+    id: 4,
+    title: "Durability and Sustainability with High-Performance Glass",
+    description:
+      "Impact-resistant glass that provides sound and heat insulation, focusing on sustainability and environmental care.",
+    image:
+      "https://plus.unsplash.com/premium_photo-1661880095551-b900dbf2308d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Z2xhc3MlMjBjb21wYW55fGVufDB8fDB8fHww",
+  },
+];
 const Hero = () => {
   let [swiper, setSwiper] = useState<SwiperCore | null>(null);
   let [currentIndex, setCurrentIndex] = useState<number>(0);
-  let slides: {
-    id: number;
-    title: string;
-    description: string;
-    image: string;
-  }[] = [
-    {
-      id: 1,
-      title: "Welcome to Our Glass Company",
-      description:
-        "We offer a wide range of high-quality glass solutions for architectural designs and modern buildings.",
-      image:
-        "https://plus.unsplash.com/premium_photo-1661880095551-b900dbf2308d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Z2xhc3MlMjBjb21wYW55fGVufDB8fDB8fHww", // Architectural glass
-    },
-    {
-      id: 2,
-      title: "High-Quality Glass Manufacturing",
-      description:
-        "We utilize advanced technologies to produce durable and safe glass for residential and commercial purposes.",
-      image:
-        "https://images.unsplash.com/photo-1470075801209-17f9ec0cada6?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Z2xhc3MlMjBjb21wYW55fGVufDB8fDB8fHww", // Glass manufacturing
-    },
-    {
-      id: 3,
-      title: "Innovative Glass Designs",
-      description:
-        "Custom glass designs to suit all tastes, from doors and windows to premium interior decorations.",
-      image:
-        "https://images.unsplash.com/photo-1489465033131-30f7e2025f68?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Z2xhc3MlMjBjb21wYW55fGVufDB8fDB8fHww", // Interior glass design
-    },
-    {
-      id: 4,
-      title: "Durability and Sustainability with High-Performance Glass",
-      description:
-        "Impact-resistant glass that provides sound and heat insulation, focusing on sustainability and environmental care.",
-      image:
-        "https://plus.unsplash.com/premium_photo-1661880095551-b900dbf2308d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Z2xhc3MlMjBjb21wYW55fGVufDB8fDB8fHww",
-    },
-  ];
+
   return (
     <section className="mt-[96px] h-[600px] lg:h-[86.7vh] flex flex-col  ">
       <Swiper

@@ -6,6 +6,7 @@ import Header from "@/components/Navigation/Header";
 import { ThemeProvider } from "@/constants/theme-provider";
 import NextTopLoader from "nextjs-toploader";
 import Footer from "@/components/Footer";
+import DashboardLink from "@/components/sharable/DashboardLink";
 
 export const metadata: Metadata = {
   title: "Altoukhy",
@@ -40,6 +41,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange>
           <Header />
+          <DashboardLink />
           {children}
           <Footer />
         </ThemeProvider>

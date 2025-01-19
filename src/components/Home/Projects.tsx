@@ -1,12 +1,13 @@
 "use client";
 import { Swiper, SwiperSlide } from "swiper/react";
-
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import { Autoplay, EffectCoverflow } from "swiper/modules";
 import Image from "next/image";
 import MainTitle from "../sharable/MainTitle";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "@/store/store";
 
 const Projects = () => {
   let projects: { title: string; image: string }[] = [
@@ -27,6 +28,8 @@ const Projects = () => {
       image: "https://glassteceg.com/wp-content/uploads/2024/06/1-1-3.jpg",
     },
   ];
+  const { data, isLoading } = useSelector((state: RootState) => state.banners);
+  const dispatch = useDispatch<AppDispatch>();
   return (
     <section className="container ">
       <MainTitle title={"Some Of Our Projects"} />
@@ -64,19 +67,26 @@ const Projects = () => {
         pagination={true}
         modules={[EffectCoverflow, Autoplay]}
         className="!w-full h-full swiper4 !py-[10px]">
-        {projects.map((project) => (
-          <SwiperSlide className="relative " key={project.title}>
+        {data.map((project) => (
+          <SwiperSlide className="relative " key={project.name}>
             <img
-              alt={project.title}
-              className="border-2 rounded-lg border-border overflow-hidden"
+              alt={project.name}
+              className="border-2 rounded-lg border-border h-[400px] overflow-hidden"
               src={project.image}
             />
             <div className="absolute bottom-0  text-center    bg-background/50 w-full">
-              <h2 className="py-4 text-lg font-bold">{project.title}</h2>
+              <h2 className="py-4 text-lg font-bold">{project.name}</h2>
             </div>
           </SwiperSlide>
         ))}
       </Swiper>
+      {isLoading && (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {Array.from({ length: 3 }).map((_, i) => (
+            <div className="w-full rounded-lg h-[400px] bg-accent animate-pulse" />
+          ))}
+        </div>
+      )}
     </section>
   );
 };

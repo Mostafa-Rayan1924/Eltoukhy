@@ -1,7 +1,5 @@
-import { suppliers } from "@/components/Home/Suppliers";
-import Contact from "@/components/sharable/Contact";
-import PageHeading from "@/components/sharable/PageHeading";
-import SupplierSwiper from "@/components/sharable/SupplierSwiper";
+import SuppliersPage from "@/components/suppliers/SuppliersPage";
+
 export const metadata = {
   title: "Altoukhy - Suppliers",
   description:
@@ -12,16 +10,8 @@ export const metadata = {
 
 const page = () => {
   return (
-    <section className="mt-[140px] container space-y-16 md:space-y-28   ">
-      <div className="space-y-10">
-        <PageHeading title="National Suppliers" />
-        <SupplierSwiper items={suppliers} numOFSlides={4.6} />
-      </div>
-      <div className="space-y-10">
-        <PageHeading title="International Suppliers" />
-        <SupplierSwiper items={suppliers} numOFSlides={4.6} />
-      </div>
-      <Contact />
+    <section className="mt-[140px] container    ">
+      <SuppliersPage />
     </section>
   );
 };

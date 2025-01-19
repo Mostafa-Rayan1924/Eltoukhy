@@ -1,4 +1,10 @@
+"use client";
+import { AppDispatch, RootState } from "@/store/store";
 import SupplierSwiper from "../sharable/SupplierSwiper";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { SuppliersFunc } from "@/store/HomeSlices/suppliersSlice";
+import SuppliersSkeletion from "../sharable/SuppliersSkeletion";
 export let suppliers: { image: string; title: string }[] = [
   {
     image: "https://glassteceg.com/wp-content/uploads/2023/12/7-5-300x300.jpg",
@@ -38,9 +44,23 @@ export let suppliers: { image: string; title: string }[] = [
   },
 ];
 const Suppliers = () => {
+  const { data, isLoading } = useSelector(
+    (state: RootState) => state.suppliers
+  );
+  const dispatch = useDispatch<AppDispatch>();
+  useEffect(() => {
+    dispatch(SuppliersFunc());
+  }, []);
   return (
     <div className="max-w-[850px] mx-auto ">
-      <SupplierSwiper items={suppliers} numOFSlides={4} />
+      {isLoading && <SuppliersSkeletion />}
+      {!isLoading && data.length > 0 ? (
+        <SupplierSwiper items={data} numOFSlides={4} />
+      ) : (
+        <h2 className="text-center text-4xl tracking-wide mt-4 font-bold">
+          No Suppliers
+        </h2>
+      )}
     </div>
   );
 };

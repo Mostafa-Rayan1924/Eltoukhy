@@ -51,7 +51,7 @@ const SupplierSwiper = ({
             />
           </div>
           <h2 className="mt-2 md:mt-4 text-center text-xl capitalize ">
-            {item.title}
+            {item.name}
           </h2>
         </SwiperSlide>
       ))}

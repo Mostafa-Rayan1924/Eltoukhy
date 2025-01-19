@@ -7,6 +7,7 @@ import { ThemeProvider } from "@/constants/theme-provider";
 import NextTopLoader from "nextjs-toploader";
 import Footer from "@/components/Footer";
 import DashboardLink from "@/components/sharable/DashboardLink";
+import ReduxProvider from "@/store/ReduxProvider";
 
 export const metadata: Metadata = {
   title: "Altoukhy",
@@ -34,17 +35,19 @@ export default function RootLayout({
   return (
     <html className="scroll-smooth" lang="en">
       <body className={`${font.className} overflow-x-hidden antialiased`}>
-        <NextTopLoader color="#5384ef" />
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange>
-          <Header />
-          <DashboardLink />
-          {children}
-          <Footer />
-        </ThemeProvider>
+        <ReduxProvider>
+          <NextTopLoader color="#5384ef" />
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange>
+            <Header />
+            <DashboardLink />
+            {children}
+            <Footer />
+          </ThemeProvider>
+        </ReduxProvider>
       </body>
     </html>
   );

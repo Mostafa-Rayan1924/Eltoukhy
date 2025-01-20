@@ -1,7 +1,8 @@
+import { ServicesType } from "@/Types/types";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 type InitialState = {
-  data: {}[];
+  data: ServicesType[];
   isLoading: boolean;
   error: string | undefined;
 };

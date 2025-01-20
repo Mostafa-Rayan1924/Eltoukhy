@@ -1,7 +1,8 @@
+import { ProjectType } from "@/Types/types";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 type InitialState = {
-  data: {}[];
+  data: ProjectType[];
   isLoading: boolean;
   error: string | undefined;
 };

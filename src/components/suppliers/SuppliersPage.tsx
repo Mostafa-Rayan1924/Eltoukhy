@@ -16,13 +16,17 @@ const SuppliersPage = () => {
   useEffect(() => {
     dispatch(SuppliersFunc());
   }, []);
+  console.log(data);
   return (
     <div className="space-y-16 md:space-y-28">
       <div className="space-y-10">
         <PageHeading title="National Suppliers" />
         {isLoading && <SuppliersSkeletion />}
         {!isLoading && data.length > 0 ? (
-          <SupplierSwiper items={data} numOFSlides={4.6} />
+          <SupplierSwiper
+            items={data.filter((item) => item.type.en === "National")}
+            numOFSlides={4.6}
+          />
         ) : (
           <h2 className="text-center text-4xl tracking-wide mt-4 font-bold">
             No Suppliers
@@ -31,7 +35,10 @@ const SuppliersPage = () => {
       </div>
       <div className="space-y-10">
         <PageHeading title="International Suppliers" />
-        <SupplierSwiper items={suppliers} numOFSlides={4.6} />
+        <SupplierSwiper
+          items={data.filter((item) => item.type.en === "International")}
+          numOFSlides={4.6}
+        />
       </div>
       <Contact />
     </div>

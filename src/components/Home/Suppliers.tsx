@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { SuppliersFunc } from "@/store/HomeSlices/suppliersSlice";
 import SuppliersSkeletion from "../sharable/SuppliersSkeletion";
+import { SupplierType } from "@/Types/types";
 export let suppliers: { image: string; title: string }[] = [
   {
     image: "https://glassteceg.com/wp-content/uploads/2023/12/7-5-300x300.jpg",
@@ -45,9 +46,9 @@ export let suppliers: { image: string; title: string }[] = [
 ];
 const Suppliers = () => {
   const { data, isLoading } = useSelector(
-    (state: RootState) => state.suppliers
+    (state: RootState) =>
+      state.suppliers as { data: SupplierType[]; isLoading: boolean }
   );
-  console.log(data);
   const dispatch = useDispatch<AppDispatch>();
   useEffect(() => {
     dispatch(SuppliersFunc());

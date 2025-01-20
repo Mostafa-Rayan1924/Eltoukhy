@@ -8,11 +8,12 @@ import "swiper/css/pagination";
 
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import Image from "next/image";
+import { SupplierType } from "@/Types/types";
 const SupplierSwiper = ({
   items,
   numOFSlides,
 }: {
-  items: { image: string; title: string }[];
+  items: SupplierType[];
   numOFSlides: number;
 }) => {
   return (

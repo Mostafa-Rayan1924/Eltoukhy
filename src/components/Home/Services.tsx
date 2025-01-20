@@ -8,9 +8,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { ServicesFunc } from "@/store/HomeSlices/servicesSlice";
 import ServicesSkeleton from "../sharable/ServicesSkeleton";
+import { ServicesType } from "@/Types/types";
 
 const Services = () => {
-  const { data, isLoading } = useSelector((state: RootState) => state.services);
+  const { data, isLoading } = useSelector(
+    (state: RootState) =>
+      state.services as { data: ServicesType[]; isLoading: boolean }
+  );
   const dispatch = useDispatch<AppDispatch>();
   useEffect(() => {
     dispatch(ServicesFunc());

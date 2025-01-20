@@ -1,7 +1,8 @@
+import { SupplierType } from "@/Types/types";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 type InitialState = {
-  data: {}[];
+  data: SupplierType[];
   isLoading: boolean;
   error: string | undefined;
 };

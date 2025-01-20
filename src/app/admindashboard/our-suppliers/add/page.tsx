@@ -1,4 +1,4 @@
-"use client"; // إضافة هذه الجملة لتحديد أن الكومبوننت يعمل في بيئة العميل فقط
+"use client"; // تأكد من أن الكومبوننت يعمل في بيئة العميل فقط
 
 import { Button } from "@/components/ui/button";
 import {
@@ -21,14 +21,14 @@ const SupplierPageAdd = () => {
   const [file, setFile] = useState<File | null>(null);
   const [isClient, setIsClient] = useState(false);
 
-  // تأكد من أننا في بيئة العميل
+  // تأكد من أننا في بيئة العميل فقط
   useEffect(() => {
     if (typeof window !== "undefined") {
-      setIsClient(true);
+      setIsClient(true); // فقط إذا كان الكود يعمل في المتصفح
     }
   }, []);
 
-  // في حال كانت الصفحة لا تعمل في بيئة العميل
+  // إذا كانت الصفحة لا تعمل في بيئة العميل، نعيد null لتجنب ظهور أي مكونات تعتمد على الكائنات الخاصة بالعميل
   if (!isClient) {
     return null;
   }
@@ -40,11 +40,11 @@ const SupplierPageAdd = () => {
 
   const { reset, formState } = form;
 
-  function onSubmit(values: z.infer<typeof SupplierSchema>) {
+  const onSubmit = (values: z.infer<typeof SupplierSchema>) => {
     console.log(values);
     reset();
     setFile(null); // إعادة تعيين الملف بعد الإرسال
-  }
+  };
 
   return (
     <section className="mt-[130px] container">

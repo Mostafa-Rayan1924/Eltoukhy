@@ -15,7 +15,6 @@ import { Upload } from "lucide-react";
 import { useState } from "react";
 import PageHeading from "@/components/sharable/PageHeading";
 import { SupplierSchema } from "@/components/validation/Supplier";
-
 const SupplierPageAdd = () => {
   let [file, setFile] = useState<File | null>(null);
   const form = useForm<z.infer<typeof SupplierSchema>>({

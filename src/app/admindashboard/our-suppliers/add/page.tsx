@@ -1,4 +1,5 @@
 "use client";
+
 import { Button } from "@/components/ui/button";
 import {
   FormControl,
@@ -12,11 +13,21 @@ import { Input } from "@/components/ui/input";
 import { z } from "zod";
 import { FormProvider, useForm } from "react-hook-form";
 import { Upload } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import PageHeading from "@/components/sharable/PageHeading";
 import { SupplierSchema } from "@/components/validation/Supplier";
+
 const SupplierPageAdd = () => {
-  let [file, setFile] = useState<File | null>(null);
+  const [file, setFile] = useState<File | null>(null);
+  const [isClient, setIsClient] = useState(false);
+
+  // تأكد من أننا في بيئة العميل
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setIsClient(true);
+    }
+  }, []);
+
   const form = useForm<z.infer<typeof SupplierSchema>>({
     resolver: zodResolver(SupplierSchema),
     mode: "onChange",
@@ -28,6 +39,11 @@ const SupplierPageAdd = () => {
     console.log(values);
     reset();
     setFile(null);
+  }
+
+  if (!isClient) {
+    // في حالة عدم وجود window، سيتم إعادة العناصر الفارغة أو الانتظار
+    return null;
   }
 
   return (
@@ -61,10 +77,10 @@ const SupplierPageAdd = () => {
             name="titleAr"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Name En</FormLabel>
+                <FormLabel>Name Ar</FormLabel>
                 <FormControl>
                   <Input
-                    placeholder="Enter  Name En"
+                    placeholder="Enter Name Ar"
                     {...field}
                     value={field.value || ""}
                   />
@@ -78,12 +94,12 @@ const SupplierPageAdd = () => {
             name="category"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>category</FormLabel>
+                <FormLabel>Category</FormLabel>
                 <FormControl>
                   <select
-                    className="w-full bg-background  p-1 outline-none rounded-lg border border-border"
+                    className="w-full bg-background p-1 outline-none rounded-lg border border-border"
                     {...field}>
-                    <option className="hidden ">selcet category</option>
+                    <option className="hidden">Select category</option>
                     <option value={"National"}>National</option>
                     <option value={"International"}>International</option>
                   </select>
@@ -98,10 +114,10 @@ const SupplierPageAdd = () => {
                 <div className="flex flex-col gap-1">
                   <img
                     src={URL.createObjectURL(file)}
-                    className="size-[300px]  object-fill rounded-lg max-w-xs mx-auto"
+                    className="size-[300px] object-fill rounded-lg max-w-xs mx-auto"
                   />
                   <p className="flex items-center justify-center gap-1">
-                    <span>size:</span>
+                    <span>Size:</span>
                     <span className="text-primary">{`${(
                       file.size /
                       (1024 * 1024)

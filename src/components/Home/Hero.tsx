@@ -9,6 +9,7 @@ import { motion } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@/store/store";
 import { bannersFunc } from "@/store/HomeSlices/bannersSlice";
+import { BannerType } from "@/Types/types";
 export let slides: {
   id: number;
   title: string;
@@ -51,7 +52,10 @@ export let slides: {
 const Hero = () => {
   let [swiper, setSwiper] = useState<SwiperCore | null>(null);
   let [currentIndex, setCurrentIndex] = useState<number>(0);
-  const { data, isLoading } = useSelector((state: RootState) => state.banners);
+  const { data, isLoading } = useSelector(
+    (state: RootState) =>
+      state.banners as { data: BannerType[]; isLoading: boolean }
+  );
   const dispatch = useDispatch<AppDispatch>();
   useEffect(() => {
     dispatch(bannersFunc());
@@ -81,32 +85,32 @@ const Hero = () => {
             </div>
           </SwiperSlide>
         )}
-        {data.map((data) => (
-          <SwiperSlide key={data._id}>
+        {data.map((item) => (
+          <SwiperSlide>
             <div className="size-full relative">
               <Image
                 className="brightness-[0.3] aspect-square "
-                src={data.image}
+                src={item?.image}
                 fill
-                alt={data.name}
+                alt={item?.name?.en || "Banner image"}
                 priority={true}
                 loading="eager"
               />
             </div>
-            <div className="absolute top-[40%]  -translate-y-1/2 w-full  text-center md:text-start  md:ms-20">
+            <div className="absolute top-[40%] -translate-y-1/2 w-full text-center md:text-start md:ms-20">
               <motion.h2
                 initial={{ opacity: 0, y: -40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7 }}
                 className="text-white text-2xl md:text-4xl font-semibold capitalize mb-1 md:mb-3 md:max-w-2xl leading-relaxed">
-                {data.name}
+                {item.name.en}
               </motion.h2>
               <motion.p
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.2 }}
-                className="text-lg md:text-2xl text-gray-300 mx-3 md:mx-0  md:max-w-2xl leading-relaxed">
-                {data.description}
+                className="text-lg md:text-2xl text-gray-300 mx-3 md:mx-0 md:max-w-2xl leading-relaxed">
+                {item.description.en}
               </motion.p>
             </div>
           </SwiperSlide>
@@ -114,14 +118,14 @@ const Hero = () => {
 
         <div className=" absolute bottom-14 sm:bottom-10 md:right-5 lg:right-10 z-10 w-full">
           <div className="flex items-center  justify-center md:justify-end gap-4">
-            {data.slice(0, 4).map((data, i) => (
+            {data.slice(0, 4).map((item, i) => (
               <div
                 onClick={() => {
                   swiper?.slideTo(i);
                   setCurrentIndex(i);
                 }}
                 className="size-[60px] sm:size-[120px] md:size-[170px] cursor-pointer relative"
-                key={data._id}>
+                key={i}>
                 <Image
                   className={`rounded-lg duration-300  ${
                     currentIndex === i
@@ -129,8 +133,8 @@ const Hero = () => {
                       : "grayscale-[100%]"
                   }`}
                   fill
-                  src={data.image}
-                  alt={data.title}
+                  src={item?.image}
+                  alt={item?.image}
                 />
               </div>
             ))}

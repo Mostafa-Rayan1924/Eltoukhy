@@ -44,14 +44,14 @@ const SupplierSwiper = ({
         <SwiperSlide key={i}>
           <div className={`relative w-full h-[150px]   m-auto`}>
             <Image
-              src={item.image}
+              src={item?.image}
               fill
-              alt={item.title}
+              alt={item?.title?.en}
               className="rounded-lg"
             />
           </div>
           <h2 className="mt-2 md:mt-4 text-center text-xl capitalize ">
-            {item.name}
+            {item?.title.en}
           </h2>
         </SwiperSlide>
       ))}

@@ -20,8 +20,8 @@ const Services = () => {
       <MainTitle title={"Services"} />
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:grid-cols-3">
         {isLoading && <ServicesSkeleton />}
-        {data.map((item) => (
-          <ServBox key={item._id} item={item} />
+        {data?.map((item) => (
+          <ServBox key={item?._id} item={item} />
         ))}
       </div>
       <div className="text-center mt-10">

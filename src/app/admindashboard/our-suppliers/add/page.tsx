@@ -74,7 +74,25 @@ const SupplierPageAdd = () => {
               </FormItem>
             )}
           />
-
+          <FormField
+            control={form.control}
+            name="category"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>category</FormLabel>
+                <FormControl>
+                  <select
+                    className="w-full bg-background  p-1 outline-none rounded-lg border border-border"
+                    {...field}>
+                    <option className="hidden ">selcet category</option>
+                    <option value={"National"}>National</option>
+                    <option value={"International"}>International</option>
+                  </select>
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
           <div className="flex flex-col gap-2">
             <label className="text-sm" htmlFor="fileInput">
               {file ? (

@@ -1,4 +1,3 @@
-import { api } from "@/api";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 type InitialState = {
@@ -13,8 +12,10 @@ let initialState: InitialState = {
 };
 export let ServicesFunc = createAsyncThunk("Services/getData", async () => {
   try {
-    let { data } = await axios.get(`${api}/nova/api/category/getall`);
-    return data.data;
+    let res = await axios.get(
+      `${process.env.NEXT_PUBLIC_BASE_URL}glass/api/subcategory/getall`
+    );
+    return res?.data?.data?.documents;
   } catch (error: any) {
     throw new Error(error?.message);
   }

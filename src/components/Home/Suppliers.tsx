@@ -47,6 +47,7 @@ const Suppliers = () => {
   const { data, isLoading } = useSelector(
     (state: RootState) => state.suppliers
   );
+  console.log(data);
   const dispatch = useDispatch<AppDispatch>();
   useEffect(() => {
     dispatch(SuppliersFunc());
@@ -54,7 +55,7 @@ const Suppliers = () => {
   return (
     <div className="max-w-[850px] mx-auto ">
       {isLoading && <SuppliersSkeletion />}
-      {!isLoading && data.length > 0 ? (
+      {!isLoading && data?.length > 0 ? (
         <SupplierSwiper items={data} numOFSlides={4} />
       ) : (
         <h2 className="text-center text-4xl tracking-wide mt-4 font-bold">

@@ -1,8 +1,8 @@
-import { api } from "@/api";
+import { BannerType } from "@/Types/types";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 type InitialState = {
-  data: {}[];
+  data: BannerType[];
   isLoading: boolean;
   error: string | undefined;
 };
@@ -13,8 +13,10 @@ let initialState: InitialState = {
 };
 export let bannersFunc = createAsyncThunk("banners/getData", async () => {
   try {
-    let { data } = await axios.get(`${api}/nova/api/poster/getall`);
-    return data.data;
+    let res = await axios.get(
+      `${process.env.NEXT_PUBLIC_BASE_URL}glass/api/poster/getall`
+    );
+    return res?.data?.data?.documents;
   } catch (error: any) {
     throw new Error(error?.message);
   }

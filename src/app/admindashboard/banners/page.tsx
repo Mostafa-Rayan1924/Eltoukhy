@@ -1,10 +1,21 @@
 "use client";
-import { slides } from "@/components/Home/Hero";
 import DashboradTitle from "@/constants/DashboradTitle";
 import { TrashIcon } from "lucide-react";
 import Image from "next/image";
-
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "@/store/store";
+import { bannersFunc } from "@/store/HomeSlices/bannersSlice";
+import { BannerType } from "@/Types/types";
+import { useEffect } from "react";
 const page = () => {
+  const { data, isLoading } = useSelector(
+    (state: RootState) =>
+      state.banners as { data: BannerType[]; isLoading: boolean }
+  );
+  const dispatch = useDispatch<AppDispatch>();
+  useEffect(() => {
+    dispatch(bannersFunc());
+  }, []);
   return (
     <section className="mt-[140px] container">
       <DashboradTitle
@@ -13,13 +24,13 @@ const page = () => {
         Btntitle="Add Banner"
       />
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {slides.map((slide) => (
+        {data?.map((slide) => (
           <div
-            key={slide.id}
+            key={slide._id}
             className="relative w-full rounded-lg border-2 border-border   h-[250px]">
             <Image
-              src={slide.image}
-              alt={slide.title}
+              src={slide?.image}
+              alt={slide?.name?.en}
               fill
               className="object-fill p-2  rounded-lg"
             />

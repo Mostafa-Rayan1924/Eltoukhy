@@ -4,32 +4,18 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import { Autoplay, EffectCoverflow } from "swiper/modules";
-import Image from "next/image";
 import MainTitle from "../sharable/MainTitle";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@/store/store";
+import { useEffect } from "react";
+import { ProjectFunc } from "@/store/HomeSlices/projectSlice";
 
 const Projects = () => {
-  let projects: { title: string; image: string }[] = [
-    {
-      title: "Project 1",
-      image: "https://glassteceg.com/wp-content/uploads/2024/06/2-5.jpg",
-    },
-    {
-      title: "Project 2",
-      image: "https://glassteceg.com/wp-content/uploads/2024/06/2.png",
-    },
-    {
-      title: "Project 3",
-      image: "https://glassteceg.com/wp-content/uploads/2024/06/2-1-1.jpg",
-    },
-    {
-      title: "Project 4",
-      image: "https://glassteceg.com/wp-content/uploads/2024/06/1-1-3.jpg",
-    },
-  ];
-  const { data, isLoading } = useSelector((state: RootState) => state.banners);
+  const { data, isLoading } = useSelector((state: RootState) => state.projects);
   const dispatch = useDispatch<AppDispatch>();
+  useEffect(() => {
+    dispatch(ProjectFunc());
+  }, []);
   return (
     <section className="container ">
       <MainTitle title={"Some Of Our Projects"} />
@@ -67,15 +53,15 @@ const Projects = () => {
         pagination={true}
         modules={[EffectCoverflow, Autoplay]}
         className="!w-full h-full swiper4 !py-[10px]">
-        {data.map((project) => (
-          <SwiperSlide className="relative " key={project.name}>
+        {data?.map((project) => (
+          <SwiperSlide className="relative " key={project?.title?.en}>
             <img
-              alt={project.name}
+              alt={project?.title?.en}
               className="border-2 rounded-lg border-border h-[400px] overflow-hidden"
-              src={project.image}
+              src={project?.image}
             />
             <div className="absolute bottom-0  text-center    bg-background/50 w-full">
-              <h2 className="py-4 text-lg font-bold">{project.name}</h2>
+              <h2 className="py-4 text-lg font-bold">{project?.title?.en}</h2>
             </div>
           </SwiperSlide>
         ))}

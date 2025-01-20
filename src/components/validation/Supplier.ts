@@ -10,4 +10,5 @@ export const SupplierSchema = z.object({
     message: "Title in Arabic must be at least 3 characters",
   }),
   image: z.instanceof(File, { message: "Image is required" }),
+  category: z.string({ message: "Category is required" }),
 });

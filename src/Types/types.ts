@@ -32,3 +32,16 @@ export enum category {
   opt1 = "Glass Work",
   opt2 = "Aluminum Work",
 }
+export type BannerType = {
+  name: {
+    en: string;
+    ar: string;
+  };
+  description: {
+    en: string;
+    ar: string;
+  };
+  _id: string;
+  image: string;
+  __v: number;
+};

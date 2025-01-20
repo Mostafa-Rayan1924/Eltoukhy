@@ -27,6 +27,7 @@ const ServicesPageAdd = () => {
   const { reset, formState } = form;
 
   function onSubmit(values: z.infer<typeof ServicesSchema>) {
+    if (files.length === 0) return;
     console.log(values);
     reset();
     setFiles([]);
@@ -132,7 +133,10 @@ const ServicesPageAdd = () => {
             {files.length > 0 && (
               <div className="block w-fit mx-auto mt-4">
                 <button
-                  onClick={() => setFiles([])}
+                  onClick={() => {
+                    setFiles([]);
+                    form.setValue("image", []);
+                  }}
                   className={buttonVariants({
                     size: "sm",
                     variant: "destructive",

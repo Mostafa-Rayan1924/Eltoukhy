@@ -1,5 +1,4 @@
-"use client"; // تأكد من أن الكومبوننت يعمل في بيئة العميل فقط
-
+"use client";
 import { Button } from "@/components/ui/button";
 import {
   FormControl,
@@ -13,26 +12,12 @@ import { Input } from "@/components/ui/input";
 import { z } from "zod";
 import { FormProvider, useForm } from "react-hook-form";
 import { Upload } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import PageHeading from "@/components/sharable/PageHeading";
 import { SupplierSchema } from "@/components/validation/Supplier";
 
 const SupplierPageAdd = () => {
-  const [file, setFile] = useState<File | null>(null);
-  const [isClient, setIsClient] = useState(false);
-
-  // تأكد من أننا في بيئة العميل فقط
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      setIsClient(true); // فقط إذا كان الكود يعمل في المتصفح
-    }
-  }, []);
-
-  // إذا كانت الصفحة لا تعمل في بيئة العميل، نعيد null لتجنب ظهور أي مكونات تعتمد على الكائنات الخاصة بالعميل
-  if (!isClient) {
-    return null;
-  }
-
+  let [file, setFile] = useState<File | null>(null);
   const form = useForm<z.infer<typeof SupplierSchema>>({
     resolver: zodResolver(SupplierSchema),
     mode: "onChange",
@@ -40,11 +25,11 @@ const SupplierPageAdd = () => {
 
   const { reset, formState } = form;
 
-  const onSubmit = (values: z.infer<typeof SupplierSchema>) => {
+  function onSubmit(values: z.infer<typeof SupplierSchema>) {
     console.log(values);
     reset();
-    setFile(null); // إعادة تعيين الملف بعد الإرسال
-  };
+    setFile(null);
+  }
 
   return (
     <section className="mt-[130px] container">
@@ -77,10 +62,10 @@ const SupplierPageAdd = () => {
             name="titleAr"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Name Ar</FormLabel>
+                <FormLabel>Name En</FormLabel>
                 <FormControl>
                   <Input
-                    placeholder="Enter Name Ar"
+                    placeholder="Enter  Name En"
                     {...field}
                     value={field.value || ""}
                   />
@@ -94,12 +79,12 @@ const SupplierPageAdd = () => {
             name="category"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Category</FormLabel>
+                <FormLabel>category</FormLabel>
                 <FormControl>
                   <select
-                    className="w-full bg-background p-1 outline-none rounded-lg border border-border"
+                    className="w-full bg-background  p-1 outline-none rounded-lg border border-border"
                     {...field}>
-                    <option className="hidden">Select category</option>
+                    <option className="hidden ">selcet category</option>
                     <option value={"National"}>National</option>
                     <option value={"International"}>International</option>
                   </select>
@@ -114,10 +99,10 @@ const SupplierPageAdd = () => {
                 <div className="flex flex-col gap-1">
                   <img
                     src={URL.createObjectURL(file)}
-                    className="size-[300px] object-fill rounded-lg max-w-xs mx-auto"
+                    className="size-[300px]  object-fill rounded-lg max-w-xs mx-auto"
                   />
                   <p className="flex items-center justify-center gap-1">
-                    <span>Size:</span>
+                    <span>size:</span>
                     <span className="text-primary">{`${(
                       file.size /
                       (1024 * 1024)

@@ -17,13 +17,12 @@ import { useState } from "react";
 import PageHeading from "@/components/sharable/PageHeading";
 
 const BannerPage = () => {
-  let [file, setFile] = useState<File | null>(null);
   const form = useForm<z.infer<typeof BannersSchema>>({
     resolver: zodResolver(BannersSchema),
     mode: "onChange",
   });
-
   const { reset, formState } = form;
+  let [file, setFile] = useState<File | null>(null);
 
   function onSubmit(values: z.infer<typeof BannersSchema>) {
     console.log(values);

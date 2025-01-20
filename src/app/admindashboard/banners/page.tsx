@@ -7,6 +7,7 @@ import { AppDispatch, RootState } from "@/store/store";
 import { bannersFunc } from "@/store/HomeSlices/bannersSlice";
 import { BannerType } from "@/Types/types";
 import { useEffect } from "react";
+import Loader from "@/components/sharable/Loader";
 const page = () => {
   const { data, isLoading } = useSelector(
     (state: RootState) =>
@@ -16,6 +17,8 @@ const page = () => {
   useEffect(() => {
     dispatch(bannersFunc());
   }, []);
+  if (isLoading) return <Loader />;
+
   return (
     <section className="mt-[140px] container">
       <DashboradTitle

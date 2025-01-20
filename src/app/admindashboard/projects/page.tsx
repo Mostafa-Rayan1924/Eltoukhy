@@ -6,12 +6,15 @@ import DashboradTitle from "@/constants/DashboradTitle";
 import { TrashIcon } from "lucide-react";
 import Image from "next/image";
 import { ProjectFunc } from "@/store/HomeSlices/projectSlice";
+import Loader from "@/components/sharable/Loader";
 const Projects = () => {
   const { data, isLoading } = useSelector((state: RootState) => state.projects);
   const dispatch = useDispatch<AppDispatch>();
   useEffect(() => {
     dispatch(ProjectFunc());
   }, []);
+  if (isLoading) return <Loader />;
+
   return (
     <div className="mt-[140px] container">
       <div className="mt-[140px] container">

@@ -6,6 +6,7 @@ import { AppDispatch, RootState } from "@/store/store";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { SuppliersFunc } from "@/store/HomeSlices/suppliersSlice";
+import Loader from "@/components/sharable/Loader";
 const SuppliersPage = () => {
   const { data, isLoading } = useSelector(
     (state: RootState) => state.suppliers
@@ -14,6 +15,7 @@ const SuppliersPage = () => {
   useEffect(() => {
     dispatch(SuppliersFunc());
   }, []);
+  if (isLoading) return <Loader />;
   return (
     <div className="mt-[140px]">
       <div className="mt-[140px] container">

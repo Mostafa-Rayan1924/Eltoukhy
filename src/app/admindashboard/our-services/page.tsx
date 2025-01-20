@@ -6,12 +6,15 @@ import { AppDispatch, RootState } from "@/store/store";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { ServicesFunc } from "@/store/HomeSlices/servicesSlice";
+import Loader from "@/components/sharable/Loader";
 const ServicesPage = () => {
   const { data, isLoading } = useSelector((state: RootState) => state.services);
   const dispatch = useDispatch<AppDispatch>();
   useEffect(() => {
     dispatch(ServicesFunc());
   }, []);
+  if (isLoading) return <Loader />;
+
   return (
     <div className="mt-[140px] container">
       <DashboradTitle

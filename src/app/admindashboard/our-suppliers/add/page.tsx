@@ -1,4 +1,4 @@
-"use client";
+"use client"; // إضافة هذه الجملة لتحديد أن الكومبوننت يعمل في بيئة العميل فقط
 
 import { Button } from "@/components/ui/button";
 import {
@@ -28,6 +28,11 @@ const SupplierPageAdd = () => {
     }
   }, []);
 
+  // في حال كانت الصفحة لا تعمل في بيئة العميل
+  if (!isClient) {
+    return null;
+  }
+
   const form = useForm<z.infer<typeof SupplierSchema>>({
     resolver: zodResolver(SupplierSchema),
     mode: "onChange",
@@ -38,12 +43,7 @@ const SupplierPageAdd = () => {
   function onSubmit(values: z.infer<typeof SupplierSchema>) {
     console.log(values);
     reset();
-    setFile(null);
-  }
-
-  if (!isClient) {
-    // في حالة عدم وجود window، سيتم إعادة العناصر الفارغة أو الانتظار
-    return null;
+    setFile(null); // إعادة تعيين الملف بعد الإرسال
   }
 
   return (

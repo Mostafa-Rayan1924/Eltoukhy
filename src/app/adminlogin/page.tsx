@@ -14,15 +14,31 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "@/store/store";
+import { loginFunc } from "@/store/AuthSlices/loginSlice";
+import { useEffect } from "react";
 const Admin = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     mode: "onChange",
   });
+  const { user, loading } = useSelector(
+    (state: RootState) =>
+      state.login as { user: { token: null; userData: null }; loading: boolean }
+  );
+  const dispatch = useDispatch<AppDispatch>();
+
   const { reset, formState } = form;
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
-    reset();
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    let params = {
+      email: values.email,
+      password: values.password,
+    };
+    let res = await dispatch(loginFunc(params));
+    if (res.meta.requestStatus === "fulfilled") {
+      reset();
+    }
   }
   return (
     <section className="mt-[150px] container">
@@ -64,8 +80,13 @@ const Admin = () => {
               </FormItem>
             )}
           />
-          <Button className={"w-full"} type="submit">
-            {formState.isSubmitting ? "loading" : "Submit"}
+          <Button
+            disabled={formState.isSubmitting}
+            className={`${
+              formState.isSubmitting ? "opacity-5" : "opacity-100 "
+            } w-full`}
+            type="submit">
+            {formState.isSubmitting ? "loading..." : "Submit"}
           </Button>
         </form>
       </Form>

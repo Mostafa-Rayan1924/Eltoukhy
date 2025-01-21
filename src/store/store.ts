@@ -3,6 +3,7 @@ import bannerSlice from "./HomeSlices/bannersSlice";
 import ServicesSlice from "./HomeSlices/servicesSlice";
 import SuppliersSlice from "./HomeSlices/suppliersSlice";
 import Projectslice from "./HomeSlices/projectSlice";
+import LoginSlice from "./AuthSlices/loginSlice";
 
 export const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ export const store = configureStore({
     services: ServicesSlice,
     suppliers: SuppliersSlice,
     projects: Projectslice,
+    login: LoginSlice,
   },
 });
 

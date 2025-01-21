@@ -79,3 +79,15 @@ export type ProjectType = {
   _id: string;
   __v: number;
 };
+export type loginType = {
+  user: {
+    token: string | null;
+    userData: {
+      id: number;
+      name: string;
+      email: string;
+    } | null;
+  };
+  loading: boolean;
+  error: string | undefined;
+};

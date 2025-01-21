@@ -1,28 +1,45 @@
 "use client";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@/store/store";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import DashboradTitle from "@/constants/DashboradTitle";
 import { TrashIcon } from "lucide-react";
 import Image from "next/image";
 import { ProjectFunc } from "@/store/HomeSlices/projectSlice";
 import Loader from "@/components/sharable/Loader";
+import { deleteItem } from "@/components/Services/api";
+import DelLoader from "@/components/sharable/DelLoader";
 const Projects = () => {
   const { data, isLoading } = useSelector((state: RootState) => state.projects);
   const dispatch = useDispatch<AppDispatch>();
   useEffect(() => {
     dispatch(ProjectFunc());
   }, []);
-  if (isLoading) return <Loader />;
-
+  const [loading, setLoading] = useState<boolean>(false);
+  const [deletingId, setDeletingId] = useState<string>("");
+  const handleDelete = async (id: string) => {
+    setLoading(true);
+    setDeletingId(id);
+    try {
+      await deleteItem("project", id);
+      dispatch(ProjectFunc());
+    } catch (error) {
+      console.error("Failed to delete item:", error);
+    } finally {
+      setLoading(false);
+      setDeletingId("");
+    }
+  };
   return (
     <div className="mt-[140px] container">
-      <div className="mt-[140px] container">
-        <DashboradTitle
-          title="Projects"
-          link="/admindashboard/projects/add"
-          Btntitle="Add Project"
-        />
+      <DashboradTitle
+        title="Projects"
+        link="/admindashboard/projects/add"
+        Btntitle="Add Project"
+      />
+      {isLoading ? (
+        <Loader />
+      ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {data?.map((item) => (
             <div className="rounded-lg border-2 border-border pt-2 px-2">
@@ -34,7 +51,10 @@ const Projects = () => {
                   className="object-fill"
                 />
 
-                <div className="absolute top-5 right-5 size-8 bg-red-500 rounded-full grid place-items-center">
+                {loading && deletingId === item._id && <DelLoader />}
+                <div
+                  onClick={() => handleDelete(item?._id)}
+                  className="absolute top-5 right-5 size-8 bg-red-500 rounded-full grid place-items-center">
                   <TrashIcon className="size-4 text-white font-bold cursor-pointer" />
                 </div>
               </div>
@@ -44,7 +64,7 @@ const Projects = () => {
             </div>
           ))}
         </div>
-      </div>
+      )}
     </div>
   );
 };

@@ -8,6 +8,7 @@ import NextTopLoader from "nextjs-toploader";
 import Footer from "@/components/Footer";
 import DashboardLink from "@/components/sharable/DashboardLink";
 import ReduxProvider from "@/store/ReduxProvider";
+import { Toaster } from "react-hot-toast";
 
 export const metadata: Metadata = {
   title: "Altoukhy",
@@ -47,6 +48,7 @@ export default function RootLayout({
             {children}
             <Footer />
           </ThemeProvider>
+          <Toaster position="top-center" reverseOrder={false} />
         </ReduxProvider>
       </body>
     </html>

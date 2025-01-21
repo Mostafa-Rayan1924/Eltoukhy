@@ -24,9 +24,9 @@ const Contact = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("submitting");
-    //id mgvezoaa
+    //id xqaarvpy
     try {
-      const response = await fetch("https://formspree.io/f/mgvezoaa", {
+      const response = await fetch("https://formspree.io/f/xqaarvpy", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

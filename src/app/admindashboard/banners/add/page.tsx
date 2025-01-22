@@ -29,7 +29,7 @@ const BannerPage = () => {
     (state: RootState) => state.addBanner as { islodaing: boolean }
   );
   const dispatch = useDispatch<AppDispatch>();
-  let [file, setFile] = useState<File | null>(null);
+  let [file, setFile] = useState<any | null>(null);
 
   async function onSubmit(values: z.infer<typeof BannersSchema>) {
     let formData = new FormData();
@@ -79,7 +79,7 @@ const BannerPage = () => {
                 <FormLabel>titleAr</FormLabel>
                 <FormControl>
                   <Input
-                    placeholder="Enter  titleAr"
+                    placeholder="Enter titleAr"
                     {...field}
                     value={field.value || ""}
                   />

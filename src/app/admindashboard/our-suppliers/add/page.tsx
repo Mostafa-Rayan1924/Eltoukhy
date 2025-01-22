@@ -20,7 +20,7 @@ import { AppDispatch, RootState } from "@/store/store";
 import { useDispatch, useSelector } from "react-redux";
 
 const SupplierPageAdd = () => {
-  let [file, setFile] = useState<File | null>(null);
+  let [file, setFile] = useState<any | null>(null);
   const form = useForm<z.infer<typeof SupplierSchema>>({
     resolver: zodResolver(SupplierSchema),
     mode: "onChange",

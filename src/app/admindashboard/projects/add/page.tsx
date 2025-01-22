@@ -20,7 +20,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@/store/store";
 
 const page = () => {
-  const [files, setFiles] = useState<File[]>([]);
+  const [files, setFiles] = useState<any[]>([]);
   const form = useForm<z.infer<typeof ProjectsSchema>>({
     resolver: zodResolver(ProjectsSchema),
     mode: "onChange",

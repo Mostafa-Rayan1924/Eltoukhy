@@ -21,7 +21,7 @@ import { AppDispatch, RootState } from "@/store/store";
 import { addServicesFunc } from "@/store/DashboardSlices/addServices";
 
 const ServicesPageAdd = () => {
-  const [files, setFiles] = useState<File[]>([]);
+  const [files, setFiles] = useState<any[]>([]);
   const form = useForm<z.infer<typeof ServicesSchema>>({
     resolver: zodResolver(ServicesSchema),
     mode: "onChange",

@@ -10,5 +10,5 @@ export const ServicesSchema = z.object({
     message: "Title in Arabic must be at least 3 characters",
   }),
   category: z.string({ message: "Category is required" }),
-  image: z.any({ message: "Image is required" }),
+  images: z.any({ message: "Image is required" }),
 });

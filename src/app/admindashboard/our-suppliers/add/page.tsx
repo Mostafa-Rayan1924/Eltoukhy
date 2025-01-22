@@ -15,6 +15,9 @@ import { Upload } from "lucide-react";
 import { useState } from "react";
 import PageHeading from "@/components/sharable/PageHeading";
 import { SupplierSchema } from "@/components/validation/Supplier";
+import { addSupplierFunc } from "@/store/DashboardSlices/addSupplier";
+import { AppDispatch, RootState } from "@/store/store";
+import { useDispatch, useSelector } from "react-redux";
 
 const SupplierPageAdd = () => {
   let [file, setFile] = useState<File | null>(null);
@@ -24,11 +27,24 @@ const SupplierPageAdd = () => {
   });
 
   const { reset, formState } = form;
+  const { islodaing } = useSelector(
+    (state: RootState) => state.addSupplier as { islodaing: boolean }
+  );
+  const dispatch = useDispatch<AppDispatch>();
+  async function onSubmit(values: z.infer<typeof SupplierSchema>) {
+    let formData = new FormData();
+    formData.append("title.en", values.titleEn);
+    formData.append("title.ar", values.titleAr);
+    formData.append("type.en", values.category);
+    formData.append("type.ar", values.category == "National" ? "وطني" : "دولي");
+    formData.append("image", values.image);
 
-  function onSubmit(values: z.infer<typeof SupplierSchema>) {
-    console.log(values);
-    reset();
-    setFile(null);
+    let res = await dispatch(addSupplierFunc(formData));
+    if (res.meta.requestStatus === "fulfilled") {
+      reset();
+      setFile(null);
+      form.setValue("category", "");
+    }
   }
 
   return (
@@ -62,10 +78,10 @@ const SupplierPageAdd = () => {
             name="titleAr"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Name En</FormLabel>
+                <FormLabel>Name Ar</FormLabel>
                 <FormControl>
                   <Input
-                    placeholder="Enter  Name En"
+                    placeholder="Enter  Name Ar"
                     {...field}
                     value={field.value || ""}
                   />
@@ -130,7 +146,10 @@ const SupplierPageAdd = () => {
               </p>
             )}
           </div>
-          <Button className="w-full" type="submit">
+          <Button
+            disabled={formState.isSubmitting}
+            className={`w-full ${formState.isSubmitting && "opacity-50"}`}
+            type="submit">
             {formState.isSubmitting ? "Loading" : "Submit"}
           </Button>
         </form>

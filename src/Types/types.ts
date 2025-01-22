@@ -29,8 +29,8 @@ export type profileTypeItem = {
   link: string;
 };
 export enum category {
-  opt1 = "Glass Work",
-  opt2 = "Aluminum Work",
+  GlassWork = "678d9cb50255a46ffcfbdf0b",
+  AluminumWork = "678e629e0876f8971d65e290",
 }
 export type BannerType = {
   name: {

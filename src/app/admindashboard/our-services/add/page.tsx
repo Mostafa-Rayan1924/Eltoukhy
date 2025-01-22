@@ -12,10 +12,13 @@ import { Input } from "@/components/ui/input";
 import { z } from "zod";
 import { FormProvider, useForm } from "react-hook-form";
 import { Upload, X } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PageHeading from "@/components/sharable/PageHeading";
 import { ServicesSchema } from "@/components/validation/ServicesSchema";
 import { category } from "@/Types/types";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "@/store/store";
+import { addServicesFunc } from "@/store/DashboardSlices/addServices";
 
 const ServicesPageAdd = () => {
   const [files, setFiles] = useState<File[]>([]);
@@ -23,14 +26,28 @@ const ServicesPageAdd = () => {
     resolver: zodResolver(ServicesSchema),
     mode: "onChange",
   });
-
+  const { islodaing } = useSelector(
+    (state: RootState) => state.addServices as { islodaing: boolean }
+  );
+  const dispatch = useDispatch<AppDispatch>();
   const { reset, formState } = form;
 
-  function onSubmit(values: z.infer<typeof ServicesSchema>) {
+  async function onSubmit(values: z.infer<typeof ServicesSchema>) {
     if (files.length === 0) return;
-    console.log(values);
-    reset();
-    setFiles([]);
+    let formData = new FormData();
+    formData.append("title.en", values.titleEn);
+    formData.append("title.ar", values.titleAr);
+    formData.append("category", values.category);
+    formData.append("image", values.images[0]);
+    values.images.forEach((file: File) => {
+      formData.append("images", file);
+    });
+    let res = await dispatch(addServicesFunc(formData));
+    if (res.meta.requestStatus === "fulfilled") {
+      reset();
+      setFiles([]);
+      form.setValue("category", "");
+    }
   }
   return (
     <section className="mt-[130px] container">
@@ -86,8 +103,12 @@ const ServicesPageAdd = () => {
                     className="w-full bg-background  p-1 outline-none rounded-lg border border-border"
                     {...field}>
                     <option className="hidden ">selcet category</option>
-                    <option value={category.opt1}>{category.opt1}</option>
-                    <option value={category.opt2}>{category.opt2}</option>
+                    <option value={category.GlassWork}>
+                      {Object.keys(category)[0]}
+                    </option>
+                    <option value={category.AluminumWork}>
+                      {Object.keys(category)[1]}
+                    </option>
                   </select>
                 </FormControl>
                 <FormMessage />
@@ -135,7 +156,7 @@ const ServicesPageAdd = () => {
                 <button
                   onClick={() => {
                     setFiles([]);
-                    form.setValue("image", []);
+                    form.setValue("images", []);
                   }}
                   className={buttonVariants({
                     size: "sm",
@@ -153,7 +174,7 @@ const ServicesPageAdd = () => {
               onChange={(event) => {
                 if (!event.target.files) return;
                 setFiles([...files, ...Array.from(event.target.files)]);
-                form.setValue("image", Array.from(event.target.files));
+                form.setValue("images", Array.from(event.target.files));
               }}
               className="w-full max-w-xs hidden"
             />
@@ -161,7 +182,10 @@ const ServicesPageAdd = () => {
               {files.length == 0 && "Please select at least one image"}
             </p>
           </div>
-          <Button className="w-full" type="submit">
+          <Button
+            disabled={formState.isSubmitting}
+            className={`w-full ${formState.isSubmitting && "opacity-50"}`}
+            type="submit">
             {formState.isSubmitting ? "Loading" : "Submit"}
           </Button>
         </form>

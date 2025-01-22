@@ -15,6 +15,9 @@ import { Upload, X } from "lucide-react";
 import { useState } from "react";
 import PageHeading from "@/components/sharable/PageHeading";
 import { ProjectsSchema } from "@/components/validation/ProjectsSchema";
+import { addProjectFunc } from "@/store/DashboardSlices/addProject";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "@/store/store";
 
 const page = () => {
   const [files, setFiles] = useState<File[]>([]);
@@ -22,14 +25,26 @@ const page = () => {
     resolver: zodResolver(ProjectsSchema),
     mode: "onChange",
   });
-
+  const { islodaing } = useSelector(
+    (state: RootState) => state.addProject as { islodaing: boolean }
+  );
+  const dispatch = useDispatch<AppDispatch>();
   const { reset, formState } = form;
 
-  function onSubmit(values: z.infer<typeof ProjectsSchema>) {
+  async function onSubmit(values: z.infer<typeof ProjectsSchema>) {
     if (files.length === 0) return;
-    console.log(values);
-    reset();
-    setFiles([]);
+    let formData = new FormData();
+    formData.append("title.en", values.titleEn);
+    formData.append("title.ar", values.titleAr);
+    formData.append("image", values.images[0]);
+    values.images.forEach((file: File) => {
+      formData.append("images", file);
+    });
+    let res = await dispatch(addProjectFunc(formData));
+    if (res.meta.requestStatus === "fulfilled") {
+      reset();
+      setFiles([]);
+    }
   }
   return (
     <section className="mt-[130px] container">
@@ -116,7 +131,7 @@ const page = () => {
                 <button
                   onClick={() => {
                     setFiles([]);
-                    form.setValue("image", []);
+                    form.setValue("images", []);
                   }}
                   className={buttonVariants({
                     size: "sm",
@@ -134,7 +149,7 @@ const page = () => {
               onChange={(event) => {
                 if (!event.target.files) return;
                 setFiles([...files, ...Array.from(event.target.files)]);
-                form.setValue("image", Array.from(event.target.files));
+                form.setValue("images", Array.from(event.target.files));
               }}
               className="w-full max-w-xs hidden"
             />
@@ -142,7 +157,10 @@ const page = () => {
               {files.length == 0 && "Please select at least one image"}
             </p>
           </div>
-          <Button className="w-full" type="submit">
+          <Button
+            disabled={formState.isSubmitting}
+            className={`w-full ${formState.isSubmitting && "opacity-50"}`}
+            type="submit">
             {formState.isSubmitting ? "Loading" : "Submit"}
           </Button>
         </form>

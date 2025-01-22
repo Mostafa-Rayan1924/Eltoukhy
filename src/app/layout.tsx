@@ -9,6 +9,7 @@ import Footer from "@/components/Footer";
 import DashboardLink from "@/components/sharable/DashboardLink";
 import ReduxProvider from "@/store/ReduxProvider";
 import { Toaster } from "react-hot-toast";
+import CheckOnline from "@/constants/CheckOnline";
 
 export const metadata: Metadata = {
   title: "Altoukhy",
@@ -37,6 +38,7 @@ export default function RootLayout({
     <html className="scroll-smooth" lang="en">
       <body className={`${font.className} overflow-x-hidden antialiased`}>
         <ReduxProvider>
+          <CheckOnline />
           <NextTopLoader color="#5384ef" />
           <ThemeProvider
             attribute="class"

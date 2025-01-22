@@ -38,7 +38,7 @@ const page = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 container my-10 lg:grid-cols-3">
         {loading && <ServicesSkeleton />}
         {data?.images?.map((item) => (
-          <div className="w-full relative h-[400px]" key={item}>
+          <div className="w-full shadow-md  relative h-[350px]" key={item}>
             <Image src={item} alt="img" fill />
           </div>
         ))}

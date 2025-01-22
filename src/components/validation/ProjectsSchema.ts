@@ -9,5 +9,5 @@ export const ProjectsSchema = z.object({
   titleAr: z.string({ message: "Title in Arabic is required" }).min(3, {
     message: "Title in Arabic must be at least 3 characters",
   }),
-  image: z.any({ message: "Image is required" }),
+  images: z.any({ message: "Images is required" }),
 });

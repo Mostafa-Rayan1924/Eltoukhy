@@ -15,6 +15,9 @@ import { FormProvider, useForm } from "react-hook-form";
 import { Upload } from "lucide-react";
 import { useState } from "react";
 import PageHeading from "@/components/sharable/PageHeading";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "@/store/store";
+import { addBannerFunc } from "@/store/DashboardSlices/addBanner";
 
 const BannerPage = () => {
   const form = useForm<z.infer<typeof BannersSchema>>({
@@ -22,12 +25,24 @@ const BannerPage = () => {
     mode: "onChange",
   });
   const { reset, formState } = form;
+  const { islodaing } = useSelector(
+    (state: RootState) => state.addBanner as { islodaing: boolean }
+  );
+  const dispatch = useDispatch<AppDispatch>();
   let [file, setFile] = useState<File | null>(null);
 
-  function onSubmit(values: z.infer<typeof BannersSchema>) {
-    console.log(values);
-    reset();
-    setFile(null);
+  async function onSubmit(values: z.infer<typeof BannersSchema>) {
+    let formData = new FormData();
+    formData.append("name.en", values.titleEn);
+    formData.append("name.ar", values.titleAr);
+    formData.append("description.en", values.DescEn);
+    formData.append("description.ar", values.DescAr);
+    formData.append("image", values.image);
+    let res = await dispatch(addBannerFunc(formData));
+    if (res.meta.requestStatus === "fulfilled") {
+      reset();
+      setFile(null);
+    }
   }
 
   return (
@@ -145,7 +160,10 @@ const BannerPage = () => {
               </p>
             )}
           </div>
-          <Button className="w-full" type="submit">
+          <Button
+            disabled={formState.isSubmitting}
+            className={`w-full ${formState.isSubmitting && "opacity-50"}`}
+            type="submit">
             {formState.isSubmitting ? "Loading" : "Submit"}
           </Button>
         </form>

@@ -32,6 +32,8 @@ const SupplierPageAdd = () => {
   );
   const dispatch = useDispatch<AppDispatch>();
   async function onSubmit(values: z.infer<typeof SupplierSchema>) {
+    if (typeof window === "undefined") return;
+
     let formData = new FormData();
     formData.append("title.en", values.titleEn);
     formData.append("title.ar", values.titleAr);
@@ -135,8 +137,11 @@ const SupplierPageAdd = () => {
               type="file"
               id="fileInput"
               onChange={(e) => {
-                setFile(e.target.files![0]);
-                form.setValue("image", e.target.files![0]);
+                if (e.target.files && e.target.files[0]) {
+                  const selectedFile = e.target.files[0];
+                  setFile(selectedFile);
+                  form.setValue("image", selectedFile);
+                }
               }}
               className="w-full max-w-xs hidden"
             />

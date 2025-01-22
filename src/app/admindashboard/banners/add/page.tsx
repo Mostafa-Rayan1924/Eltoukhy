@@ -13,7 +13,7 @@ import { z } from "zod";
 import { BannersSchema } from "@/components/validation/BannersSchema";
 import { FormProvider, useForm } from "react-hook-form";
 import { Upload } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import PageHeading from "@/components/sharable/PageHeading";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@/store/store";
@@ -32,12 +32,18 @@ const BannerPage = () => {
   let [file, setFile] = useState<any | null>(null);
 
   async function onSubmit(values: z.infer<typeof BannersSchema>) {
+    if (typeof window === "undefined") return;
+
     let formData = new FormData();
     formData.append("name.en", values.titleEn);
     formData.append("name.ar", values.titleAr);
     formData.append("description.en", values.DescEn);
     formData.append("description.ar", values.DescAr);
-    formData.append("image", values.image);
+
+    if (values.image) {
+      formData.append("image", values.image);
+    }
+
     let res = await dispatch(addBannerFunc(formData));
     if (res.meta.requestStatus === "fulfilled") {
       reset();
@@ -129,7 +135,7 @@ const BannerPage = () => {
                 <div className="flex flex-col gap-1">
                   <img
                     src={URL.createObjectURL(file)}
-                    className="size-[300px]  object-fill rounded-lg max-w-xs mx-auto"
+                    className="size-[300px] object-fill rounded-lg max-w-xs mx-auto"
                   />
                   <p className="flex items-center justify-center gap-1">
                     <span>size:</span>
@@ -149,8 +155,11 @@ const BannerPage = () => {
               type="file"
               id="fileInput"
               onChange={(e) => {
-                setFile(e.target.files![0]);
-                form.setValue("image", e.target.files![0]);
+                if (e.target.files && e.target.files[0]) {
+                  const selectedFile = e.target.files[0];
+                  setFile(selectedFile);
+                  form.setValue("image", selectedFile);
+                }
               }}
               className="w-full max-w-xs hidden"
             />

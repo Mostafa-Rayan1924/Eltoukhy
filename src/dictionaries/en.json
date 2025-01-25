@@ -20,9 +20,19 @@
       "btn": "Read More"
     },
     "servicesSec": {
-      "btn": "see More"
+      "title": "Services",
+      "btn": "See More"
+    },
+    "projectSec": {
+      "title": "Some of our projects",
+      "titlepart": "Our Projects"
+    },
+    "suppliersSec": {
+      "titlepart": "National Suppliers",
+      "titlepart2": "International Suppliers"
     },
     "whyUs": {
+      "title": "Why Choose Us?",
       "values": {
         "quality": {
           "title": "Quality",
@@ -57,6 +67,9 @@
       "Phone": "Phone",
       "Hours": "Working Hours",
       "time": "From 10:00 AM to 4:00 PM",
+      "namePlace": "Enter Full Name",
+      "btn": "Send Message",
+      "emailPlace": "Enter Email",
       "name": "Full Name",
       "email": "Email",
       "message": "Leave a Message"
@@ -71,6 +84,35 @@
       "locationSub": "20 Ahmed Fahim Bayoumi St., Nozha Area, Cairo",
       "p1": "In El Toukhy you will find everything new",
       "p2": "© 2025. El Toukhy. All rights reserved."
+    }
+  },
+  "About": {
+    "title": "ABOUT OUR COMPANY",
+    "desc": "Altoukhy Glass launched in 1998 as a specialist company in glass works, supply and install all types of Glass works Altoukhy Glass takes a keen commitment for servicing their clients and providing them with the highest quality of glass works with prompt installation and suitable prices",
+    "btn": "Contact Us",
+    "Mission": {
+      "title": "Our Mission",
+      "desc": "We have always searched to employ the best-qualified engineers and technicians and to retain skilled and trained workers. Over the years, our experience and projects have expanded and grown to include all areas of Egypt. This continuous growth reflects our commitment to excellence and delivering top-quality results in every endeavor."
+    },
+    "Vision": {
+      "title": "Our Vision",
+      "desc": "Is conontinu ally grow and improve in order to consistently exced our customer's expectation in quality and value , not only in size and scope , the performance of Altoukhy Glass' developing a quality service show- case is a reflection of its brand and identity to be Egypt's most reliable glass processing and supplying company in Egypt ."
+    }
+  },
+  "Profile": {
+    "title": "Profile",
+    "btn": "View",
+    "portfolio": {
+      "title": "Altoukhy Portfolio",
+      "desc": "Explore our completed projects showcasing our expertise across various industries."
+    },
+    "catalog": {
+      "title": "Altoukhy Catalog",
+      "desc": "View our catalog for detailed product and service specifications."
+    },
+    "preQualification": {
+      "title": "Altoukhy Pre Qualification",
+      "desc": "Check the pre-qualification criteria for working with us and collaborating effectively."
     }
   }
 }

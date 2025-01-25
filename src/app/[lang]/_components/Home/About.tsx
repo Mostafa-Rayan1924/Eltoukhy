@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { buttonVariants } from "../ui/button";
 import SquareIcon from "../sharable/SquareIcon";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 const About = ({
   Home,
 }: {
@@ -15,6 +16,8 @@ const About = ({
     };
   };
 }) => {
+  let pathName = usePathname().split("/")[1];
+
   return (
     <section className="relative   ">
       <div className="absolute left-0 lg:-left-20 w-[150px] h-[150px] sm:w-[320px] sm:h-[320px]    opacity-40 blur-3xl  rounded-full bg-gradient-to-r from-primary to-transparent -z-20 top-0 " />
@@ -45,7 +48,9 @@ const About = ({
               {Home.aboutSec.description}
             </motion.p>
             <div className="text-center ">
-              <Link href={"/about"} className={buttonVariants({ size: "lg" })}>
+              <Link
+                href={`/${pathName}/about`}
+                className={buttonVariants({ size: "lg" })}>
                 {Home.aboutSec.btn}
               </Link>
             </div>

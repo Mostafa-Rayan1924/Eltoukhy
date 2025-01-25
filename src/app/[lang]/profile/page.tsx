@@ -13,11 +13,11 @@ export const metadata = {
 
 const ProfilePage = async () => {
   const locale = await getCurrentLocale();
-  const { Home } = await getTrans(locale);
+  const { Home, Profile } = await getTrans(locale);
   return (
     <section className="mt-[140px]   ">
-      <PageHeading title="Profile" />
-      <ProfileCard />
+      <PageHeading title={Profile.title} />
+      <ProfileCard Profile={Profile} />
       <Contact Home={Home} />
     </section>
   );

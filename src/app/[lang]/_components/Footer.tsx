@@ -119,10 +119,12 @@ const Footer = ({
               </p>
 
               <ul className="mt-4 space-y-4 text-sm">
-                <Button
-                  className={(buttonVariants({ size: "lg" }), "text-white")}>
-                  {Home.footer.call}
-                </Button>
+                <Link href={`/${locale}/contact`}>
+                  <Button
+                    className={(buttonVariants({ size: "lg" }), "text-white")}>
+                    {Home.footer.call}
+                  </Button>
+                </Link>
               </ul>
             </div>
           </div>

@@ -1,8 +1,29 @@
 "use client";
-import { goals } from "@/constants/goalsSec";
 import Image from "next/image";
 import { motion } from "framer-motion";
-const Goals = () => {
+import { GoalsItem } from "@/Types/types";
+const Goals = ({
+  About,
+}: {
+  About: {
+    Mission: { title: string; desc: string };
+    Vision: { title: string; desc: string };
+  };
+}) => {
+  let goals: GoalsItem[] = [
+    {
+      id: 1,
+      img: "/mission.svg",
+      title: About.Mission.title,
+      desc: About.Mission.desc,
+    },
+    {
+      id: 2,
+      img: "/vision.svg",
+      title: About.Vision.title,
+      desc: About.Vision.desc,
+    },
+  ];
   return (
     <section>
       <div className="container grid grid-cols-1 gap-6 md:gap-16">

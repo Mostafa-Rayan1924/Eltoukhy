@@ -14,7 +14,7 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 const Dashboard = () => {
-  let pathname = usePathname();
+  let pathname = "/" + usePathname().split("/").slice(2, 4).join("/");
   let [open, setOpen] = useState(false);
 
   return (

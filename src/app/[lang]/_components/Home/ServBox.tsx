@@ -4,9 +4,11 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { ServicesType } from "@/Types/types";
 import CheckLang from "../sharable/CheckLang";
+import { usePathname } from "next/navigation";
 const ServBox = ({ item }: { item: ServicesType }) => {
+  let pathName = usePathname().split("/")[1];
   return (
-    <Link href={`/services/serv/${item?._id}`}>
+    <Link href={`/${pathName}/services/serv/${item?._id}`}>
       <motion.div className="rounded-lg bg-background border hover:-translate-y-2 border-border hover:border-primary duration-300 size-full p-6 ">
         <div className=" w-full h-[300px] relative">
           <Image

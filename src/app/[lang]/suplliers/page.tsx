@@ -16,7 +16,7 @@ const page = async () => {
   const { Home } = await getTrans(locale);
   return (
     <section className="mt-[140px] container    ">
-      <SuppliersPage />
+      <SuppliersPage Home={Home} />
       <Contact Home={Home} />
     </section>
   );

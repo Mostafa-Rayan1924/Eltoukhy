@@ -12,8 +12,10 @@ import { ProjectFunc } from "@/store/HomeSlices/projectSlice";
 import { ProjectType } from "@/Types/types";
 import Link from "next/link";
 import CheckLang from "../sharable/CheckLang";
+import { usePathname } from "next/navigation";
 
-const Projects = () => {
+const Projects = ({ Home }: { Home: { projectSec: { title: string } } }) => {
+  let pathName = usePathname().split("/")[1];
   const { data, isLoading } = useSelector(
     (state: RootState) =>
       state.projects as { data: ProjectType[]; isLoading: boolean }
@@ -24,7 +26,7 @@ const Projects = () => {
   }, []);
   return (
     <section className="container ">
-      <MainTitle title={"Some Of Our Projects"} />
+      <MainTitle title={Home?.projectSec?.title} />
       <Swiper
         autoplay={{
           delay: 2500,
@@ -61,7 +63,7 @@ const Projects = () => {
         className="!w-full h-full swiper4 !py-[10px]">
         {data?.map((project) => (
           <SwiperSlide className="relative " key={project?.title?.en}>
-            <Link href={`/projects/${project?._id}`}>
+            <Link href={`/${pathName}/projects/${project?._id}`}>
               <img
                 alt={project?.title?.en}
                 className="border-2 rounded-lg border-border h-[400px] overflow-hidden"

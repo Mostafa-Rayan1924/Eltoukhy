@@ -91,10 +91,10 @@ const Sidebar = ({ Nav }: any) => {
           ))}
         </div>
         <SheetFooter>
-          <div className="flex items-center justify-center mx-auto mt-10 gap-4">
+          <div className="flex items-center flex-wrap justify-center mx-auto mt-10 gap-4">
             {socialLinks.map((link) => (
               <div
-                className={` hover:-translate-y-2 duration-200  relative size-12 grid place-items-center rounded-lg`}>
+                className={` hover:-translate-y-2 duration-200  relative size-9 sm:size-12 grid place-items-center rounded-lg`}>
                 <Link
                   className={`p-2  rounded-lg text-white `}
                   href={link.path}

@@ -75,7 +75,7 @@ const Header = ({ Nav }: any) => {
           </ul>
         </nav>
         <div className="flex items-center gap-4">
-          <Link className="hidden md:flex" href={"/contact"}>
+          <Link className="hidden md:flex" href={`/${locale}/contact`}>
             <button className="group relative inline-block rounded overflow-hidden border border-primary px-6 py-[6px] focus:outline-none focus:ring">
               <span className="absolute inset-y-0 start-0 w-[2px] bg-primary transition-all group-hover:w-full group-active:bg-indigo-500"></span>
               <span className="relative whitespace-nowrap text-sm font-medium text-primary transition-colors group-hover:text-white">
@@ -84,7 +84,8 @@ const Header = ({ Nav }: any) => {
             </button>
           </Link>
           <ModeToggle Nav={Nav} />
-          <LanguageSwitcher />
+          {pathname.includes("dashboard") ? "" : <LanguageSwitcher />}
+
           <div className="flex md:hidden">
             <Sidebar Nav={Nav} />
           </div>

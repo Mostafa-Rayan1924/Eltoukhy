@@ -22,6 +22,9 @@ const Contact = ({
       name: string;
       email: string;
       message: string;
+      namePlace: string;
+      emailPlace: string;
+      btn: string;
     };
   };
 }) => {
@@ -148,7 +151,7 @@ const Contact = ({
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  placeholder="Name"
+                  placeholder={Home?.contact?.namePlace}
                   className="border border-border p-2 w-full bg-accent outline-none  rounded"
                 />
               </div>
@@ -159,7 +162,7 @@ const Contact = ({
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  placeholder="Email"
+                  placeholder={Home.contact.emailPlace}
                   required
                   className="border border-border p-2 w-full bg-accent outline-none  rounded"
                 />
@@ -184,7 +187,7 @@ const Contact = ({
                 ? "loading..."
                 : status === "success"
                 ? "sent successfully"
-                : "submit"}
+                : Home.contact.btn}
             </Button>
           </form>
         </div>

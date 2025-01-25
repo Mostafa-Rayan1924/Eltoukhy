@@ -9,8 +9,13 @@ import { useEffect } from "react";
 import { ServicesFunc } from "@/store/HomeSlices/servicesSlice";
 import ServicesSkeleton from "../sharable/ServicesSkeleton";
 import { ServicesType } from "@/Types/types";
+import { usePathname } from "next/navigation";
 
-const Services = ({ Home }: { Home: { servicesSec: { btn: string } } }) => {
+const Services = ({
+  Home,
+}: {
+  Home: { servicesSec: { btn: string; title: string } };
+}) => {
   const { data, isLoading } = useSelector(
     (state: RootState) =>
       state.services as { data: ServicesType[]; isLoading: boolean }
@@ -19,9 +24,11 @@ const Services = ({ Home }: { Home: { servicesSec: { btn: string } } }) => {
   useEffect(() => {
     dispatch(ServicesFunc());
   }, []);
+  let pathName = usePathname().split("/")[1];
+
   return (
     <section className="container">
-      <MainTitle title={"Services"} />
+      <MainTitle title={Home?.servicesSec?.title} />
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:grid-cols-3">
         {isLoading && <ServicesSkeleton />}
         {data?.map((item) => (
@@ -29,7 +36,9 @@ const Services = ({ Home }: { Home: { servicesSec: { btn: string } } }) => {
         ))}
       </div>
       <div className="text-center mt-10">
-        <Link className={buttonVariants({ size: "lg" })} href={"/services"}>
+        <Link
+          className={buttonVariants({ size: "lg" })}
+          href={`/${pathName}/services`}>
           {Home?.servicesSec?.btn}
         </Link>
       </div>

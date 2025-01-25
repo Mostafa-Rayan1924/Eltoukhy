@@ -8,7 +8,11 @@ import SupplierSwiper from "../sharable/SupplierSwiper";
 import SuppliersSkeletion from "../sharable/SuppliersSkeletion";
 import { suppliers } from "../Home/Suppliers";
 import Contact from "../sharable/Contact";
-const SuppliersPage = () => {
+const SuppliersPage = ({
+  Home,
+}: {
+  Home: { suppliersSec: { titlepart: string; titlepart2: string } };
+}) => {
   const { data, isLoading } = useSelector(
     (state: RootState) => state.suppliers
   );
@@ -20,7 +24,7 @@ const SuppliersPage = () => {
   return (
     <div className="space-y-16 md:space-y-28">
       <div className="space-y-10">
-        <PageHeading title="National Suppliers" />
+        <PageHeading title={Home?.suppliersSec?.titlepart} />
         {isLoading && <SuppliersSkeletion />}
         {!isLoading && data.length > 0 ? (
           <SupplierSwiper
@@ -34,7 +38,7 @@ const SuppliersPage = () => {
         )}
       </div>
       <div className="space-y-10">
-        <PageHeading title="International Suppliers" />
+        <PageHeading title={Home?.suppliersSec?.titlepart2} />
         <SupplierSwiper
           items={data.filter((item) => item.type.en === "International")}
           numOFSlides={4.6}

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { getCats } from "./api";
 import { ServicesType } from "@/Types/types";
 import Image from "next/image";
+import CheckLang from "../sharable/CheckLang";
 const Tabs = async () => {
   let data = await getCats();
   return (
@@ -18,7 +19,7 @@ const Tabs = async () => {
               />
             </div>
             <h2 className="mt-5 text-center text-xl font-semibold">
-              {item?.title?.en}
+              <CheckLang item={item?.title} />
             </h2>
           </div>
         </Link>

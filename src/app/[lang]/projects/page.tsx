@@ -16,7 +16,7 @@ const page = async () => {
   const { Home } = await getTrans(locale);
   return (
     <section className="mt-[140px] space-y-16">
-      <PageHeading title="Our Projects" />
+      <PageHeading title={Home.projectSec.titlepart} />
       <ProjectsBoxes />
       <Contact Home={Home} />
     </section>

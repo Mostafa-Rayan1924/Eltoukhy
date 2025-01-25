@@ -24,7 +24,7 @@ export default async function Home() {
       <About Home={Home} />
       <Services Home={Home} />
       <Suppliers />
-      <Projects />
+      <Projects Home={Home} />
       <WhyUs Home={Home} />
       <Contact Home={Home} />
     </main>

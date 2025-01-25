@@ -11,7 +11,11 @@ import {
   TrendingUp,
   Truck,
 } from "lucide-react";
-const WhyUs = ({ Home }: { Home: { whyUs: { values: any } } }) => {
+const WhyUs = ({
+  Home,
+}: {
+  Home: { whyUs: { title: string; values: any } };
+}) => {
   const companyValues: WhyUsItem[] = [
     {
       id: 1,
@@ -52,7 +56,7 @@ const WhyUs = ({ Home }: { Home: { whyUs: { values: any } } }) => {
   ];
   return (
     <section>
-      <MainTitle title={"Why to choose Eltoukhy"} />
+      <MainTitle title={Home?.whyUs?.title} />
       <div className="container grid grid-cols-1 md:grid-cols-2 gap-4 lg:grid-cols-3">
         {companyValues.map((item, i) => (
           <motion.div

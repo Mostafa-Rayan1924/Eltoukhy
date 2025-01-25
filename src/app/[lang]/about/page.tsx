@@ -12,11 +12,11 @@ export const metadata = {
 };
 const AboutPage = async () => {
   const locale = await getCurrentLocale();
-  const { Home } = await getTrans(locale);
+  const { Home, About } = await getTrans(locale);
   return (
     <div className="mt-[98px]  space-y-16 md:space-y-24">
-      <AboutSec />
-      <Goals />
+      <AboutSec About={About} />
+      <Goals About={About} />
       <Contact Home={Home} />
     </div>
   );

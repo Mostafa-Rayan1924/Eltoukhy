@@ -1,4 +1,5 @@
 "use client";
+import CheckLang from "@/app/[lang]/_components/sharable/CheckLang";
 import ServicesSkeleton from "@/app/[lang]/_components/sharable/ServicesSkeleton";
 import { ServicesType } from "@/Types/types";
 import axios from "axios";
@@ -33,7 +34,7 @@ const page = () => {
     <section className="mt-[96px]">
       <h2 className="py-20 text-center text-5xl bg-accent">
         {loading && "Loading..."}
-        {data?.title?.en}
+        {data?.title ? <CheckLang item={data?.title} /> : "Glass"}
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 container my-10 lg:grid-cols-3">
         {loading && <ServicesSkeleton />}

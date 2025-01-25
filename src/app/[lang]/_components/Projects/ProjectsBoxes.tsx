@@ -7,8 +7,11 @@ import { ProjectType } from "@/Types/types";
 import Image from "next/image";
 import Link from "next/link";
 import ServicesSkeleton from "../sharable/ServicesSkeleton";
+import CheckLang from "../sharable/CheckLang";
+import { usePathname } from "next/navigation";
 
 const ProjectsBoxes = () => {
+  let pathName = usePathname().split("/")[1];
   const { data, isLoading } = useSelector(
     (state: RootState) =>
       state.projects as { data: ProjectType[]; isLoading: boolean }
@@ -22,7 +25,7 @@ const ProjectsBoxes = () => {
       {isLoading && <ServicesSkeleton />}
       {data?.map((item) => (
         <Link
-          href={`/projects/${item?._id}`}
+          href={`/${pathName}/projects/${item?._id}`}
           className="border-2 border-border hover:-translate-y-2.5 duration-300 cursor-pointer even:bg-accent overflow-hidden  rounded-lg">
           <div key={item?._id} className="w-full h-[250px] relative  shadow-md">
             <Image
@@ -34,7 +37,7 @@ const ProjectsBoxes = () => {
           </div>
           <div className="p-4">
             <h2 className="text-center capitalize text-xl font-semibold">
-              {item?.title.en}
+              <CheckLang item={item?.title} />
             </h2>
           </div>
         </Link>

@@ -19,6 +19,7 @@ const page = () => {
   useEffect(() => {
     dispatch(bannersFunc());
   }, []);
+
   const [loading, setLoading] = useState<boolean>(false);
   const [deletingId, setDeletingId] = useState<string>("");
   const handleDelete = async (id: string) => {

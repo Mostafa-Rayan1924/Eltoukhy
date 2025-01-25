@@ -1,5 +1,4 @@
 import { FolderKanban, LucideBookImage, Server, User2 } from "lucide-react";
-
 export let dashboardLinks: {
   id: number;
   title: string;

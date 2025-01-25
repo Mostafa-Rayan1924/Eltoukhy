@@ -61,8 +61,8 @@ const Projects = ({ Home }: { Home: { projectSec: { title: string } } }) => {
         pagination={true}
         modules={[EffectCoverflow, Autoplay]}
         className="!w-full h-full swiper4 !py-[10px]">
-        {data?.map((project) => (
-          <SwiperSlide className="relative " key={project?.title?.en}>
+        {data?.map((project, i) => (
+          <SwiperSlide className="relative " key={i}>
             <Link href={`/${pathName}/projects/${project?._id}`}>
               <img
                 alt={project?.title?.en}
@@ -81,7 +81,10 @@ const Projects = ({ Home }: { Home: { projectSec: { title: string } } }) => {
       {isLoading && (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {Array.from({ length: 3 }).map((_, i) => (
-            <div className="w-full rounded-lg h-[400px] bg-accent animate-pulse" />
+            <div
+              key={i}
+              className="w-full rounded-lg h-[400px] bg-accent animate-pulse"
+            />
           ))}
         </div>
       )}

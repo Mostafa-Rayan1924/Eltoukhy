@@ -49,7 +49,7 @@ const Hero = () => {
           </SwiperSlide>
         )}
         {data.map((item) => (
-          <SwiperSlide>
+          <SwiperSlide key={item._id}>
             <div className="size-full relative">
               <Image
                 className="brightness-[0.3] aspect-square "

@@ -29,6 +29,7 @@ const Goals = ({
       <div className="container grid grid-cols-1 gap-6 md:gap-16">
         {goals.map((item, i) => (
           <motion.div
+            key={i}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}

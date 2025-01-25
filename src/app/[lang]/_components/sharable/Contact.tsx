@@ -94,7 +94,7 @@ const Contact = ({
               {contactForm.map((item, i) => {
                 return (
                   <motion.div
-                    key={item.id}
+                    key={i}
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: i * 0.2 }}
@@ -112,6 +112,7 @@ const Contact = ({
               <div className="flex items-center justify-center gap-4">
                 {socialLinks.map((link) => (
                   <motion.div
+                    key={link.id}
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     whileHover={{ y: -5, transition: { duration: 0.2 } }}

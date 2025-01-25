@@ -80,6 +80,7 @@ const Sidebar = ({ Nav }: any) => {
         <div className="grid gap-4 py-4">
           {links.map((link) => (
             <Link
+              key={link.id}
               onClick={() => setOpen(!open)}
               className={`${
                 pathname === link.url ? "bg-accent text-primary" : ""
@@ -94,6 +95,7 @@ const Sidebar = ({ Nav }: any) => {
           <div className="flex items-center flex-wrap justify-center mx-auto mt-10 gap-4">
             {socialLinks.map((link) => (
               <div
+                key={link.id}
                 className={` hover:-translate-y-2 duration-200  relative size-9 sm:size-12 grid place-items-center rounded-lg`}>
                 <Link
                   className={`p-2  rounded-lg text-white `}

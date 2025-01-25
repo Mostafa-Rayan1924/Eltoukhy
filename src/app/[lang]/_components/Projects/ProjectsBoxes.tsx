@@ -25,9 +25,10 @@ const ProjectsBoxes = () => {
       {isLoading && <ServicesSkeleton />}
       {data?.map((item) => (
         <Link
+          key={item?._id}
           href={`/${pathName}/projects/${item?._id}`}
           className="border-2 border-border hover:-translate-y-2.5 duration-300 cursor-pointer even:bg-accent overflow-hidden  rounded-lg">
-          <div key={item?._id} className="w-full h-[250px] relative  shadow-md">
+          <div className="w-full h-[250px] relative  shadow-md">
             <Image
               src={item?.image}
               alt={item?.title.en}

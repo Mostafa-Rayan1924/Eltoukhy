@@ -20,7 +20,6 @@ const SuppliersPage = ({
   useEffect(() => {
     dispatch(SuppliersFunc());
   }, []);
-  console.log(data);
   return (
     <div className="space-y-16 md:space-y-28">
       <div className="space-y-10">

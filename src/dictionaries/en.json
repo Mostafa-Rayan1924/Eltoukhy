@@ -1,0 +1,76 @@
+{
+  "Nav": {
+    "home": "Home",
+    "services": "Services",
+    "projects": "Our Projects",
+    "about": "About Us",
+    "suppliers": "Our Partners",
+    "profile": "Profile",
+    "contact": "Call Us",
+    "dark": "Dark Mode",
+    "light": "Light Mode",
+    "system": "System Mode",
+    "welcome": "Welcome to Eltouky Website"
+  },
+  "Home": {
+    "aboutSec": {
+      "title": "About Us",
+      "subtitle": "Learn more about us",
+      "description": "Altoukhy Glass launched in 1998 as a specialist company in glass works, supplying and installing all types of glass works. Altoukhy Glass takes a keen commitment to serving their clients and providing them with the highest quality of glass works with prompt installation and suitable prices.",
+      "btn": "Read More"
+    },
+    "servicesSec": {
+      "btn": "see More"
+    },
+    "whyUs": {
+      "values": {
+        "quality": {
+          "title": "Quality",
+          "desc": "We ensure the highest quality in all our glass products, meeting international standards and exceeding customer expectations."
+        },
+        "executionSpeed": {
+          "title": "Execution Speed",
+          "desc": "Fast and efficient project execution, ensuring every task is delivered on time with no compromise on the quality of results provided."
+        },
+        "latestDesigns": {
+          "title": "Latest Designs",
+          "desc": "Our glass solutions feature cutting-edge design inspired by modern trends, bringing innovation and style to every project we complete."
+        },
+        "safety": {
+          "title": "Safety",
+          "desc": "Prioritizing safety in every step, our products are rigorously tested to meet strict standards while ensuring safety for all involved."
+        },
+        "supply": {
+          "title": "Supply",
+          "desc": "Reliable supply chain management ensures timely delivery of all materials, partnering with trusted providers to meet client needs."
+        },
+        "installation": {
+          "title": "Installation",
+          "desc": "Our professional team offers precise installation services, ensuring durability and a seamless finish for all glass-based projects."
+        }
+      }
+    },
+    "contact": {
+      "title": "Contact Form",
+      "location": "Location",
+      "locationSub": "20 Ahmed Fahim Bayoumi St., Nozha Area, Cairo",
+      "Phone": "Phone",
+      "Hours": "Working Hours",
+      "time": "From 10:00 AM to 4:00 PM",
+      "name": "Full Name",
+      "email": "Email",
+      "message": "Leave a Message"
+    },
+    "footer": {
+      "call": "Call Us",
+      "Hours": "Hours",
+      "time": "From 10:00 AM to 4:00 PM",
+      "links": "Links",
+      "callUs": "Contact Us",
+      "location": "Location",
+      "locationSub": "20 Ahmed Fahim Bayoumi St., Nozha Area, Cairo",
+      "p1": "In El Toukhy you will find everything new",
+      "p2": "© 2025. El Toukhy. All rights reserved."
+    }
+  }
+}

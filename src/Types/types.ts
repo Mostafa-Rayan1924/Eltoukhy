@@ -91,3 +91,11 @@ export type loginType = {
   loading: boolean;
   error: string | undefined;
 };
+export const Languages = {
+  ARABIC: "ar",
+  ENGLISH: "en",
+};
+export const Directions = {
+  RTL: "rtl",
+  LTR: "ltr",
+};

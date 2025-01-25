@@ -1,4 +1,4 @@
-import { Button, buttonVariants } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/app/[lang]/_components/ui/button";
 import Link from "next/link";
 
 const DashboradTitle = ({

@@ -7,7 +7,6 @@ const CheckOnline = () => {
   let router = useRouter();
   function updateOnlineStatus() {
     if (navigator.onLine) {
-      console.log("الجهاز متصل بالإنترنت ✅");
     } else {
       router.push("/offline");
     }

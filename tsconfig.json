@@ -27,7 +27,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/app/admindashboard/layout.tsء"
+    "src/app/[lang]/admindashboard/layout.tsء"
   ],
   "exclude": ["node_modules"]
 }

@@ -1,6 +1,0 @@
-[build]
-  publish = "build"  # مسار الملفات النهائية (قم بتعديله حسب مشروعك)
-  command = "go build"  # أمر البناء (قم بتعديله حسب مشروعك)
-
-[context.production.environment]
-  GO_VERSION = "1.18"  # حدد نسخة Go المدعومة

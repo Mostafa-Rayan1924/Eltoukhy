@@ -2,7 +2,6 @@
 
 import { usePathname, useRouter } from "next/navigation";
 import { Languages } from "@/Types/types";
-import Image from "next/image";
 const LanguageSwitcher = () => {
   const router = useRouter();
   const pathname = usePathname();
@@ -19,11 +18,9 @@ const LanguageSwitcher = () => {
         <div
           className="cursor-pointer"
           onClick={() => switchLanguage(Languages.ENGLISH)}>
-          <Image
-            width={45}
-            height={45}
+          <img
             src="/en.png"
-            className=" rounded-md object-cover"
+            className="size-9 rounded-md object-cover"
             alt="en language"
           />
         </div>
@@ -31,11 +28,9 @@ const LanguageSwitcher = () => {
         <div
           className="cursor-pointer"
           onClick={() => switchLanguage(Languages.ARABIC)}>
-          <Image
-            width={45}
-            height={45}
+          <img
             src="/ar.png"
-            className="rounded-md object-cover"
+            className="size-9 rounded-md object-cover"
             alt="ar language"
           />
         </div>

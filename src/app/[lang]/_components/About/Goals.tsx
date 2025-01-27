@@ -13,13 +13,13 @@ const Goals = ({
   let goals: GoalsItem[] = [
     {
       id: 1,
-      img: "/mission.svg",
+      img: "https://res.cloudinary.com/dlaeaq6is/image/upload/v1738001778/vision_uszf6x.svg",
       title: About.Mission.title,
       desc: About.Mission.desc,
     },
     {
       id: 2,
-      img: "/vision.svg",
+      img: "https://res.cloudinary.com/dlaeaq6is/image/upload/v1738001782/mission_j2hchc.svg",
       title: About.Vision.title,
       desc: About.Vision.desc,
     },

@@ -43,7 +43,13 @@ const AboutSec = ({
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6 }}
           className="size-full relative">
-          <Image src={"/aboutsec.svg"} alt="aboutImg" fill />
+          <Image
+            src={
+              "https://res.cloudinary.com/dlaeaq6is/image/upload/v1738001778/aboutsec_h1lojc.svg"
+            }
+            alt="aboutImg"
+            fill
+          />
         </motion.div>
       </div>
     </section>

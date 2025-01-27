@@ -1,8 +1,8 @@
 "use client";
 
 import { usePathname, useRouter } from "next/navigation";
-import { Button } from "../ui/button";
 import { Languages } from "@/Types/types";
+import Image from "next/image";
 const LanguageSwitcher = () => {
   const router = useRouter();
   const pathname = usePathname();
@@ -19,9 +19,11 @@ const LanguageSwitcher = () => {
         <div
           className="cursor-pointer"
           onClick={() => switchLanguage(Languages.ENGLISH)}>
-          <img
+          <Image
+            width={45}
+            height={45}
             src="/en.png"
-            className="size-9 rounded-md object-cover"
+            className=" rounded-md object-cover"
             alt="en language"
           />
         </div>
@@ -29,9 +31,11 @@ const LanguageSwitcher = () => {
         <div
           className="cursor-pointer"
           onClick={() => switchLanguage(Languages.ARABIC)}>
-          <img
+          <Image
+            width={45}
+            height={45}
             src="/ar.png"
-            className="size-9 rounded-md object-cover"
+            className="rounded-md object-cover"
             alt="ar language"
           />
         </div>

@@ -20,8 +20,8 @@ export const metadata: Metadata = {
   description: "Altoukhy Elegance Framed in Glass",
   icons: [
     {
-      url: "/logowhite.png",
-      href: "/logowhite.png",
+      url: "https://res.cloudinary.com/dlaeaq6is/image/upload/v1738001781/logowhite_tc2yy8.png",
+      href: "https://res.cloudinary.com/dlaeaq6is/image/upload/v1738001781/logowhite_tc2yy8.png",
       sizes: "192x192",
       type: "image/png",
       rel: "icon",

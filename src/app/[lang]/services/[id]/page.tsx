@@ -53,7 +53,7 @@ const Page = () => {
           "...Loading"
         )}
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 container my-10 lg:grid-cols-3">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 container my-10 ">
         {isLoadingServices ? (
           <ServicesSkeleton />
         ) : filteredServices.length > 0 ? (

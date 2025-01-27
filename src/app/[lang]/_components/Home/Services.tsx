@@ -29,7 +29,7 @@ const Services = ({
   return (
     <section className="container">
       <MainTitle title={Home?.servicesSec?.title} />
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:grid-cols-3">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 ">
         {isLoading && <ServicesSkeleton />}
         {data?.map((item) => (
           <ServBox key={item?._id} item={item} />

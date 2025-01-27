@@ -23,6 +23,7 @@ const Hero = () => {
   useEffect(() => {
     dispatch(bannersFunc());
   }, []);
+  console.log(swiper?.realIndex);
   return (
     <section className="mt-[96px] h-[600px] lg:h-[86.7vh] flex flex-col  ">
       <Swiper
@@ -78,21 +79,20 @@ const Hero = () => {
             </div>
           </SwiperSlide>
         ))}
-
-        <div className=" absolute bottom-14 sm:bottom-10 md:start-[-20px] lg:start-[-40px] z-10 w-full">
+        <div className=" absolute bottom-20 sm:bottom-10 md:start-[-20px] lg:start-[-40px] z-10 w-full">
           <div className="flex items-center  justify-center md:justify-end gap-4">
             {data.slice(0, 4).map((item, i) => (
               <div
-                onClick={async () => {
-                  await swiper?.slideTo(i);
+                onClick={() => {
+                  swiper?.slideTo(i);
                   setCurrentIndex(i);
                 }}
-                className="size-[60px] sm:size-[120px] md:size-[170px] cursor-pointer relative"
+                className="size-[60px] sm:size-[120px] md:size-[150px] cursor-pointer relative"
                 key={i}>
                 <Image
-                  className={`rounded-lg duration-300  ${
+                  className={`rounded-lg duration-300 ${
                     currentIndex === i
-                      ? "grayscale-0 border-primary  border-2 -translate-y-2"
+                      ? "grayscale-0 border-primary border-2 -translate-y-2"
                       : "grayscale-[100%]"
                   }`}
                   fill

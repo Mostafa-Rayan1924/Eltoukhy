@@ -107,6 +107,10 @@ const page = () => {
                         onClick={(e) => {
                           e.preventDefault();
                           setFiles(files.filter((_, i) => i !== index));
+                          form.setValue(
+                            "images",
+                            files.filter((_, i) => i !== index)
+                          );
                         }}
                         className="absolute top-2  z-20 right-2 cursor-pointer bg-red-500 size-6 rounded-full grid place-items-center">
                         <X className="size-3 text-white" />

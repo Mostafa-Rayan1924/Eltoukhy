@@ -17,9 +17,5 @@ export default function AuthLayout({
     }
   }, []);
 
-  return (
-    <div className="flex min-h-screen flex-col items-center justify-center">
-      {children}
-    </div>
-  );
+  return <div className="">{children}</div>;
 }

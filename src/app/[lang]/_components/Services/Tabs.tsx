@@ -1,13 +1,26 @@
+"use client";
 import Link from "next/link";
-import { getCats } from "./api";
-import { ServicesType } from "@/Types/types";
+import { servicesMain, ServicesType } from "@/Types/types";
 import Image from "next/image";
 import CheckLang from "../sharable/CheckLang";
-const Tabs = async () => {
-  let data = await getCats();
+import { useEffect } from "react";
+import { AppDispatch, RootState } from "@/store/store";
+import { useDispatch, useSelector } from "react-redux";
+import { ServicesGetFunc } from "@/store/ServicesSlices/getAllServices";
+import ServicesSkeleton from "../sharable/ServicesSkeleton";
+const Tabs = () => {
+  const { data, isLoading } = useSelector(
+    (state: RootState) =>
+      state.getServices as { data: servicesMain[]; isLoading: boolean }
+  );
+  const dispatch = useDispatch<AppDispatch>();
+  useEffect(() => {
+    dispatch(ServicesGetFunc());
+  }, []);
   return (
     <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-      {data.map((item: ServicesType) => (
+      {isLoading && <ServicesSkeleton />}
+      {data.map((item: servicesMain) => (
         <Link key={item?._id} href={`services/${item?._id}`}>
           <div className="rounded-lg bg-background border hover:-translate-y-2 border-border hover:border-primary duration-300 size-full p-6 ">
             <div className=" w-full h-[450px] relative">

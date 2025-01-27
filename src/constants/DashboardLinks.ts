@@ -1,4 +1,10 @@
-import { FolderKanban, LucideBookImage, Server, User2 } from "lucide-react";
+import {
+  FolderKanban,
+  LucideBookImage,
+  Server,
+  ServerCrashIcon,
+  User2,
+} from "lucide-react";
 export let dashboardLinks: {
   id: number;
   title: string;
@@ -29,5 +35,12 @@ export let dashboardLinks: {
     icon: FolderKanban,
     title: "Projects",
     path: "/admindashboard/projects",
+  },
+
+  {
+    id: 5,
+    icon: ServerCrashIcon,
+    title: "main-services",
+    path: "/admindashboard/main-services",
   },
 ];

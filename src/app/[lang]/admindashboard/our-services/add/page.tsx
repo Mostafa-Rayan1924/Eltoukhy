@@ -15,13 +15,18 @@ import { Upload, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import PageHeading from "@/app/[lang]/_components/sharable/PageHeading";
 import { ServicesSchema } from "@/app/[lang]/_components/validation/ServicesSchema";
-import { category } from "@/Types/types";
+import { category, servicesMain } from "@/Types/types";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@/store/store";
 import { addServicesFunc } from "@/store/DashboardSlices/addServices";
+import { ServicesGetFunc } from "@/store/ServicesSlices/getAllServices";
 
 const ServicesPageAdd = () => {
   const [files, setFiles] = useState<any[]>([]);
+  const { data: categoriesData, isLoading: isLoadingCategories } = useSelector(
+    (state: RootState) =>
+      state.getServices as { data: servicesMain[]; isLoading: boolean }
+  );
   const form = useForm<z.infer<typeof ServicesSchema>>({
     resolver: zodResolver(ServicesSchema),
     mode: "onChange",
@@ -31,7 +36,9 @@ const ServicesPageAdd = () => {
   );
   const dispatch = useDispatch<AppDispatch>();
   const { reset, formState } = form;
-
+  useEffect(() => {
+    dispatch(ServicesGetFunc());
+  }, []);
   async function onSubmit(values: z.infer<typeof ServicesSchema>) {
     if (files.length === 0) return;
     let formData = new FormData();
@@ -103,12 +110,11 @@ const ServicesPageAdd = () => {
                     className="w-full bg-background  p-1 outline-none rounded-lg border border-border"
                     {...field}>
                     <option className="hidden ">selcet category</option>
-                    <option value={category.GlassWork}>
-                      {Object.keys(category)[0]}
-                    </option>
-                    <option value={category.AluminumWork}>
-                      {Object.keys(category)[1]}
-                    </option>
+                    {categoriesData.map((item: servicesMain) => (
+                      <option key={item._id} value={item._id}>
+                        {item.title.en}
+                      </option>
+                    ))}
                   </select>
                 </FormControl>
                 <FormMessage />
@@ -119,7 +125,7 @@ const ServicesPageAdd = () => {
             <label className="text-sm" htmlFor="fileInput">
               <div className="flex items-center gap-2 flex-wrap">
                 {files.length > 0 ? (
-                  files.map((file, index) => (
+                  files.map((file, index: number) => (
                     <div
                       key={index}
                       className="flex flex-col border border-border relative rounded-lg p-1 gap-1 flex-1">
@@ -132,6 +138,10 @@ const ServicesPageAdd = () => {
                         onClick={(e) => {
                           e.preventDefault();
                           setFiles(files.filter((_, i) => i !== index));
+                          form.setValue(
+                            "images",
+                            files.filter((_, i) => i !== index)
+                          );
                         }}
                         className="absolute top-2  z-20 right-2 cursor-pointer bg-red-500 size-6 rounded-full grid place-items-center">
                         <X className="size-3 text-white" />

@@ -83,8 +83,8 @@ const Hero = () => {
           <div className="flex items-center  justify-center md:justify-end gap-4">
             {data.slice(0, 4).map((item, i) => (
               <div
-                onClick={() => {
-                  swiper?.slideTo(i);
+                onClick={async () => {
+                  await swiper?.slideTo(i);
                   setCurrentIndex(i);
                 }}
                 className="size-[60px] sm:size-[120px] md:size-[170px] cursor-pointer relative"

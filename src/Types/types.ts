@@ -99,3 +99,12 @@ export const Directions = {
   RTL: "rtl",
   LTR: "ltr",
 };
+export type servicesMain = {
+  title: {
+    en: string; // العنوان بالإنجليزية
+    ar: string; // العنوان بالعربية
+  };
+  image: string; // رابط الصورة
+  _id: string; // معرف العنصر
+  __v: number; // رقم الإصدار
+};

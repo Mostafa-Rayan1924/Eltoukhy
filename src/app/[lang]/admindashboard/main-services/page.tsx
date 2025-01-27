@@ -1,31 +1,32 @@
 "use client";
 import DashboradTitle from "@/constants/DashboradTitle";
-import { TrashIcon } from "lucide-react";
-import Image from "next/image";
-import { AppDispatch, RootState } from "@/store/store";
+import Loader from "../../_components/sharable/Loader";
+import DelLoader from "../../_components/sharable/DelLoader";
 import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "@/store/store";
 import { useEffect, useState } from "react";
-import { ServicesFunc } from "@/store/HomeSlices/servicesSlice";
-import Loader from "@/app/[lang]/_components/sharable/Loader";
-import DelLoader from "@/app/[lang]/_components/sharable/DelLoader";
-import { deleteItem } from "@/app/[lang]/_components/Services/api";
+import { ServicesGetFunc } from "@/store/ServicesSlices/getAllServices";
+import { deleteItem } from "../../_components/Services/api";
+import Image from "next/image";
+import { TrashIcon } from "lucide-react";
 
-const ServicesPage = () => {
-  const { data, isLoading } = useSelector((state: RootState) => state.services);
+const page = () => {
+  const { data, isLoading } = useSelector(
+    (state: RootState) => state.getServices
+  );
   const dispatch = useDispatch<AppDispatch>();
 
   const [loading, setLoading] = useState<boolean>(false);
   const [deletingId, setDeletingId] = useState<string>("");
   useEffect(() => {
-    dispatch(ServicesFunc());
+    dispatch(ServicesGetFunc());
   }, [dispatch]);
-
   const handleDelete = async (id: string) => {
     setLoading(true);
     setDeletingId(id);
     try {
-      await deleteItem("subcategory", id);
-      dispatch(ServicesFunc());
+      await deleteItem("category", id);
+      dispatch(ServicesGetFunc());
     } catch (error) {
       console.error("Failed to delete item:", error);
     } finally {
@@ -33,13 +34,12 @@ const ServicesPage = () => {
       setDeletingId("");
     }
   };
-
   return (
     <div className="mt-[140px] container">
       <DashboradTitle
         title="Services"
-        link="/admindashboard/our-services/add"
-        Btntitle="Add Service"
+        link="/admindashboard/main-services/add"
+        Btntitle="Add main Service"
       />
       {isLoading ? (
         <Loader />
@@ -72,4 +72,4 @@ const ServicesPage = () => {
   );
 };
 
-export default ServicesPage;
+export default page;

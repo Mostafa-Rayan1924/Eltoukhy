@@ -8,10 +8,13 @@ import addBannerSlice from "./DashboardSlices/addBanner";
 import addServicesSlice from "./DashboardSlices/addServices";
 import addSupplierSlice from "./DashboardSlices/addSupplier";
 import addProjectSlice from "./DashboardSlices/addProject";
+import ServicesGetSlice from "./ServicesSlices/getAllServices";
+import addMainServSlice from "./DashboardSlices/addMainServices";
 
 export const store = configureStore({
   reducer: {
     banners: bannerSlice,
+    getServices: ServicesGetSlice,
     services: ServicesSlice,
     suppliers: SuppliersSlice,
     projects: Projectslice,
@@ -20,6 +23,7 @@ export const store = configureStore({
     addServices: addServicesSlice,
     addSupplier: addSupplierSlice,
     addProject: addProjectSlice,
+    addMainServ: addMainServSlice,
   },
 });
 

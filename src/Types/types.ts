@@ -91,14 +91,6 @@ export type loginType = {
   loading: boolean;
   error: string | undefined;
 };
-export const Languages = {
-  ARABIC: "ar",
-  ENGLISH: "en",
-};
-export const Directions = {
-  RTL: "rtl",
-  LTR: "ltr",
-};
 export type servicesMain = {
   title: {
     en: string; // العنوان بالإنجليزية
@@ -107,4 +99,12 @@ export type servicesMain = {
   image: string; // رابط الصورة
   _id: string; // معرف العنصر
   __v: number; // رقم الإصدار
+};
+export enum Languages {
+  ARABIC = "ar",
+  ENGLISH = "en",
+}
+export const Directions = {
+  RTL: "rtl",
+  LTR: "ltr",
 };

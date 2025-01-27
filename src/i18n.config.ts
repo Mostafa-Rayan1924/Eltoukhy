@@ -1,5 +1,4 @@
 import { Languages } from "./Types/types";
-
 export type LanguageType = Languages.ARABIC | Languages.ENGLISH;
 
 type i18nType = {

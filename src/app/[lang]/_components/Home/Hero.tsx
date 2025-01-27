@@ -23,7 +23,6 @@ const Hero = () => {
   useEffect(() => {
     dispatch(bannersFunc());
   }, []);
-  console.log(swiper?.realIndex);
   return (
     <section className="mt-[96px] h-[600px] lg:h-[86.7vh] flex flex-col  ">
       <Swiper

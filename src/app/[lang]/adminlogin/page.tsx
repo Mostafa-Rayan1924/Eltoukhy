@@ -18,11 +18,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@/store/store";
 import { loginFunc } from "@/store/AuthSlices/loginSlice";
 import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 const Admin = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     mode: "onChange",
   });
+  let router = useRouter();
   const { user, loading } = useSelector(
     (state: RootState) =>
       state.login as { user: { token: null; userData: null }; loading: boolean }
@@ -39,6 +41,9 @@ const Admin = () => {
     if (res.meta.requestStatus === "fulfilled") {
       reset();
     }
+  }
+  if (user.token) {
+    router.push("/");
   }
   return (
     <section className="mt-[150px] container">

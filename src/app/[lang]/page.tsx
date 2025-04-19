@@ -7,7 +7,6 @@ import WhyUs from "@/app/[lang]/_components/Home/WhyUs";
 import Contact from "@/app/[lang]/_components/sharable/Contact";
 import { getCurrentLocale } from "@/lib/getCurrentLocale";
 import getTrans from "@/lib/translation";
-import Head from "next/head";
 export const metadata = {
   title: "Altoukhy - Home Page",
   description:
@@ -21,12 +20,6 @@ export default async function Home() {
   const { Home } = await getTrans(locale);
   return (
     <main className="space-y-16 md:space-y-24">
-      <Head>
-        <meta
-          name="google-site-verification"
-          content="w-aStHvm6ci3Zagn5YvqPwn30_dRy7Euliv6Vh0vehs"
-        />
-      </Head>
       <Hero />
       <About Home={Home} />
       <Services Home={Home} />

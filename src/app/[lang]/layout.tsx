@@ -19,6 +19,9 @@ import Head from "next/head";
 export const metadata: Metadata = {
   title: "Altoukhy",
   description: "Altoukhy Elegance Framed in Glass",
+  verification: {
+    google: "w-aStHvm6ci3Zagn5YvqPwn30_dRy7Euliv6Vh0vehs",
+  },
   icons: [
     {
       url: "https://res.cloudinary.com/dlaeaq6is/image/upload/v1738001781/logowhite_tc2yy8.png",
@@ -49,12 +52,6 @@ export default async function RootLayout({
       lang={locale}
       dir={locale === Languages.ARABIC ? Directions.RTL : Directions.LTR}
       className="scroll-smooth">
-      <Head>
-        <meta
-          name="google-site-verification"
-          content="w-aStHvm6ci3Zagn5YvqPwn30_dRy7Euliv6Vh0vehs"
-        />
-      </Head>
       <body className={`${font.className} overflow-x-hidden antialiased`}>
         <ReduxProvider>
           <CheckOnline />

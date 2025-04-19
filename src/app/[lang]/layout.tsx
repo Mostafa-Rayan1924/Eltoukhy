@@ -14,6 +14,7 @@ import { Directions, Languages } from "@/Types/types";
 import Navigation from "@/app/[lang]/_components/Navigation";
 import { getCurrentLocale } from "@/lib/getCurrentLocale";
 import getTrans from "@/lib/translation";
+import Head from "next/head";
 
 export const metadata: Metadata = {
   title: "Altoukhy",
@@ -48,6 +49,12 @@ export default async function RootLayout({
       lang={locale}
       dir={locale === Languages.ARABIC ? Directions.RTL : Directions.LTR}
       className="scroll-smooth">
+      <Head>
+        <meta
+          name="google-site-verification"
+          content="w-aStHvm6ci3Zagn5YvqPwn30_dRy7Euliv6Vh0vehs"
+        />
+      </Head>
       <body className={`${font.className} overflow-x-hidden antialiased`}>
         <ReduxProvider>
           <CheckOnline />

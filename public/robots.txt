@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://altoukhyglass.com
+
+# Sitemaps
+Sitemap: https://altoukhyglass.com/sitemap.xml

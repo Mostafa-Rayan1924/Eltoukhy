@@ -27,7 +27,8 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/app/[lang]/admindashboard/layout.tsء"
+    "src/app/[lang]/admindashboard/layout.tsء",
+    "next-sitemap.config.js"
   ],
   "exclude": ["node_modules"]
 }

@@ -14,7 +14,6 @@ import { Directions, Languages } from "@/Types/types";
 import Navigation from "@/app/[lang]/_components/Navigation";
 import { getCurrentLocale } from "@/lib/getCurrentLocale";
 import getTrans from "@/lib/translation";
-import Head from "next/head";
 
 export const metadata: Metadata = {
   title: "Altoukhy",

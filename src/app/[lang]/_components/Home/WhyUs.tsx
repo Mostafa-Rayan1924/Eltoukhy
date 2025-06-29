@@ -92,9 +92,6 @@ const WhyUs = ({
           ))}
         </div>
       </div>
-      <div className="mt-16 container">
-        <OurNumbers Home={Home} />
-      </div>
     </section>
   );
 };

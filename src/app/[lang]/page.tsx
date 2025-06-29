@@ -7,6 +7,7 @@ import WhyUs from "@/app/[lang]/_components/Home/WhyUs";
 import Contact from "@/app/[lang]/_components/sharable/Contact";
 import { getCurrentLocale } from "@/lib/getCurrentLocale";
 import getTrans from "@/lib/translation";
+import OurNumbers from "./_components/Home/OurNumbers";
 export const metadata = {
   title: "Altoukhy - Home Page",
   description:
@@ -26,6 +27,8 @@ export default async function Home() {
       <Suppliers />
       <Projects Home={Home} />
       <WhyUs Home={Home} />
+      <OurNumbers Home={Home} />
+
       <Contact Home={Home} />
     </main>
   );

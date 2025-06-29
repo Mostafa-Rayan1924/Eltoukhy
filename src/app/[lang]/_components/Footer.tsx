@@ -70,7 +70,7 @@ const Footer = ({
                 {Home.footer.call}
               </span>
               <h2 className="block text-2xl font-medium text-foreground hover:opacity-75 sm:text-3xl">
-                01001843200
+                01148101041
               </h2>
             </p>
 

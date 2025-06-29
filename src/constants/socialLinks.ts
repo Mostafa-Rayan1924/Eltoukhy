@@ -4,12 +4,12 @@ import React from "react";
 export let socialLinks = [
   {
     id: 1,
-    path: "https://www.instagram.com/Nova.media.eg",
+    path: "#",
     icon: "https://res.cloudinary.com/dlaeaq6is/image/upload/v1738001779/insta_k88sr0.png",
   },
   {
     id: 2,
-    path: "https://www.facebook.com/Nova.media.eg",
+    path: "https://www.facebook.com/share/1Em9wF6JDj/",
     icon: "https://res.cloudinary.com/dlaeaq6is/image/upload/v1738001778/face_ekocvl.png",
   },
   {

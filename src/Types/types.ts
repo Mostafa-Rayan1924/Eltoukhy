@@ -10,11 +10,16 @@ export type ContactItem = {
   title: string;
   desc: string;
 };
+export type ourNumbers = {
+  id: number;
+  title: string;
+  number: string;
+};
 export type WhyUsItem = {
   id: number;
   icon: React.ElementType;
   title: string;
-  desc: string;
+  desc?: string;
 };
 export type GoalsItem = {
   id: number;

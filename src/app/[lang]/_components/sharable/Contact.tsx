@@ -6,7 +6,7 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { ContactItem } from "@/Types/types";
-import { MapPin, Phone, Clock } from "lucide-react";
+import { MapPin, Phone, Clock, Mail } from "lucide-react";
 
 const Contact = ({
   Home,
@@ -23,6 +23,8 @@ const Contact = ({
       email: string;
       message: string;
       namePlace: string;
+      phone: string;
+      phonePlace: string;
       emailPlace: string;
       btn: string;
     };
@@ -42,6 +44,12 @@ const Contact = ({
       desc: "+0201001843200 +0201000655068",
     },
     {
+      id: 2,
+      icon: Mail,
+      title: Home.contact.email,
+      desc: "info@altoukhyglass.com",
+    },
+    {
       id: 3,
       icon: Clock,
       title: Home.contact.Hours,
@@ -51,6 +59,7 @@ const Contact = ({
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    phone: "",
     message: "",
   });
   const [status, setStatus] = useState("idle");
@@ -77,7 +86,7 @@ const Contact = ({
 
       if (response.ok) {
         setStatus("success");
-        setFormData({ name: "", email: "", message: "" });
+        setFormData({ name: "", email: "", message: "", phone: "" });
       } else {
         setStatus("error");
       }
@@ -153,6 +162,20 @@ const Contact = ({
                   onChange={handleChange}
                   required
                   placeholder={Home?.contact?.namePlace}
+                  className="border border-border p-2 w-full bg-accent outline-none  rounded"
+                />
+              </div>
+              <div className="flex flex-col gap-1">
+                <label>{Home.contact.phone}</label>
+                <input
+                  type="text"
+                  maxLength={11}
+                  minLength={11}
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  required
+                  placeholder={Home?.contact?.phonePlace}
                   className="border border-border p-2 w-full bg-accent outline-none  rounded"
                 />
               </div>

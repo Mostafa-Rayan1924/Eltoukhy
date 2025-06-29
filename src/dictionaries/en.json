@@ -33,6 +33,8 @@
     },
     "whyUs": {
       "title": "Why Choose Us?",
+      "titleNumber": "Our Numbers",
+      "description": "At Al-Tawkhi Glass, we combine extensive experience since our founding in 1998 with an unwavering commitment to providing the highest quality standards in glass work. We specialize in supplying and installing all types of glass efficiently and quickly, while ensuring competitive prices to suit your needs. Choosing us means relying on a reliable partner who prioritizes customer satisfaction, delivering innovative and durable glass solutions that meet your expectations.",
       "values": {
         "quality": {
           "title": "Quality",
@@ -58,16 +60,29 @@
           "title": "Installation",
           "desc": "Our professional team offers precise installation services, ensuring durability and a seamless finish for all glass-based projects."
         }
+      },
+      "project": {
+        "title1": "project",
+        "titlepart1": "200+",
+        "title2": "employee",
+        "titlepart2": "100",
+        "title3": "customer",
+        "titlepart3": "10000",
+        "title4": "years of experience",
+        "titlepart4": "27"
       }
     },
     "contact": {
       "title": "Contact Form",
       "location": "Location",
-      "locationSub": "20 Ahmed Fahim Bayoumi St., Nozha Area, Cairo",
+      "locationSub": "20 Ahmed Fahim Bayoumi, Triumph Square, El Nozha, Heliopolis",
       "Phone": "Phone",
+      "email": "Email",
       "Hours": "Working Hours",
-      "time": "From 10:00 AM to 4:00 PM",
+      "time": "From 9:00 AM to 5:00 PM",
       "namePlace": "Enter Full Name",
+      "phone": "Phone",
+      "phonePlace": "Enter Phone",
       "btn": "Send Message",
       "emailPlace": "Enter Email",
       "name": "Full Name",
@@ -77,11 +92,11 @@
     "footer": {
       "call": "Call Us",
       "Hours": "Hours",
-      "time": "From 10:00 AM to 4:00 PM",
+      "time": "From 9:00 AM to 5:00 PM",
       "links": "Links",
       "callUs": "Contact Us",
       "location": "Location",
-      "locationSub": "20 Ahmed Fahim Bayoumi St., Nozha Area, Cairo",
+      "locationSub": "20 Ahmed Fahim Bayoumi, Triumph Square, El Nozha, Heliopolis",
       "p1": "In El Toukhy you will find everything new",
       "p2": "© 2025. El Toukhy. All rights reserved."
     }

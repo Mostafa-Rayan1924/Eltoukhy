@@ -11,9 +11,8 @@ import { Toaster } from "react-hot-toast";
 import CheckOnline from "@/constants/CheckOnline";
 import { Locale } from "@/i18n.config";
 import { Directions, Languages } from "@/Types/types";
-import Navigation from "@/app/[lang]/_components/Navigation";
-import { getCurrentLocale } from "@/lib/getCurrentLocale";
 import getTrans from "@/lib/translation";
+import Navigation from "@/app/[lang]/_components/Navigation";
 
 export const metadata: Metadata = {
   title: "Altoukhy",
@@ -24,7 +23,6 @@ export const metadata: Metadata = {
   icons: [
     {
       url: "https://res.cloudinary.com/dlaeaq6is/image/upload/v1738001781/logowhite_tc2yy8.png",
-      href: "https://res.cloudinary.com/dlaeaq6is/image/upload/v1738001781/logowhite_tc2yy8.png",
       sizes: "192x192",
       type: "image/png",
       rel: "icon",
@@ -42,10 +40,13 @@ export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
-  params: Promise<{ locale: Locale }>;
+  params: Promise<{ lang: Locale }>;
 }>) {
-  const locale = await getCurrentLocale();
+  const { lang } = await params;
+
+  const locale = lang;
   const { Nav, Home } = await getTrans(locale);
+
   return (
     <html
       lang={locale}
@@ -55,6 +56,7 @@ export default async function RootLayout({
         <ReduxProvider>
           <CheckOnline />
           <NextTopLoader color="#5384ef" />
+
           <ThemeProvider
             attribute="class"
             defaultTheme="system"
@@ -62,9 +64,12 @@ export default async function RootLayout({
             disableTransitionOnChange>
             <Navigation />
             <DashboardLink />
+
             {children}
+
             <Footer locale={locale} Nav={Nav} Home={Home} />
           </ThemeProvider>
+
           <Toaster position="top-center" reverseOrder={false} />
         </ReduxProvider>
       </body>

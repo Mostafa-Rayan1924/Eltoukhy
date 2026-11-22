@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import "./globals.css";
 
 import { Cairo } from "next/font/google";
@@ -9,7 +10,6 @@ import DashboardLink from "@/app/[lang]/_components/sharable/DashboardLink";
 import ReduxProvider from "@/store/ReduxProvider";
 import { Toaster } from "react-hot-toast";
 import CheckOnline from "@/constants/CheckOnline";
-import { Locale } from "@/i18n.config";
 import { Directions, Languages } from "@/Types/types";
 import getTrans from "@/lib/translation";
 import Navigation from "@/app/[lang]/_components/Navigation";
@@ -35,14 +35,20 @@ const font = Cairo({
   weight: ["300", "400", "600", "700"],
 });
 
-export default async function RootLayout({
-  params,
-  children,
-}: Readonly<{
+type Props = {
   children: React.ReactNode;
-  params: Promise<{ lang: Locale }>;
-}>) {
+  params: Promise<{
+    lang: string;
+  }>;
+};
+
+export default async function RootLayout({ params, children }: Props) {
   const { lang } = await params;
+
+  // Validate supported languages
+  if (lang !== Languages.ARABIC && lang !== Languages.ENGLISH) {
+    notFound();
+  }
 
   const locale = lang;
   const { Nav, Home } = await getTrans(locale);
@@ -55,6 +61,7 @@ export default async function RootLayout({
       <body className={`${font.className} overflow-x-hidden antialiased`}>
         <ReduxProvider>
           <CheckOnline />
+
           <NextTopLoader color="#5384ef" />
 
           <ThemeProvider

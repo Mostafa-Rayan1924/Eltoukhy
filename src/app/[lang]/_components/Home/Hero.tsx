@@ -10,7 +10,6 @@ import { AppDispatch, RootState } from "@/store/store";
 import { bannersFunc } from "@/store/HomeSlices/bannersSlice";
 import { BannerType } from "@/Types/types";
 import CheckLang from "../sharable/CheckLang";
-import { usePathname } from "next/navigation";
 const Hero = () => {
   let [swiper, setSwiper] = useState<SwiperCore | null>(null);
   let [currentIndex, setCurrentIndex] = useState<number>(0);

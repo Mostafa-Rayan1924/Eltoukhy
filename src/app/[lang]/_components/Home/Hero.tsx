@@ -2,7 +2,6 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore from "swiper";
 import { Autoplay } from "swiper/modules";
-import "swiper/css";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
@@ -17,7 +16,7 @@ const Hero = () => {
   let [currentIndex, setCurrentIndex] = useState<number>(0);
   const { data, isLoading } = useSelector(
     (state: RootState) =>
-      state.banners as { data: BannerType[]; isLoading: boolean }
+      state.banners as { data: BannerType[]; isLoading: boolean },
   );
   const dispatch = useDispatch<AppDispatch>();
   useEffect(() => {
@@ -72,8 +71,8 @@ const Hero = () => {
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.2 }}
-                className="text-lg md:text-2xl text-gray-300 mx-3 md:mx-0 md:max-w-2xl leading-relaxed">
-                <CheckLang item={item.name} />
+                className="text-lg  text-gray-300 mx-3 md:mx-0 md:max-w-2xl leading-relaxed">
+                <CheckLang item={item.description} />
               </motion.p>
             </div>
           </SwiperSlide>
